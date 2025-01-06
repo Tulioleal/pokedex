@@ -1,0 +1,16 @@
+.header {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  width: 100%;
+  min-height: 100px;
+}
+
+.header h1 {
+  background-color: var(--primary-color);
+  color: var(--accent-color);
+  font-size: 3rem;
+  margin: 0;
+}
