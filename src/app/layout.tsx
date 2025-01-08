@@ -1,10 +1,25 @@
 import type { Metadata } from "next";
-import { Press_Start_2P } from "next/font/google";
+import { Press_Start_2P, Cardo, Poppins, Raleway } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Header";
 
 const PressStart = Press_Start_2P({
   weight: "400",
+  subsets: ["latin"],
+});
+
+const CormorantGaramond = Cardo({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+});
+
+const PoppinsFont = Poppins({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+});
+
+const RalewayFont = Raleway({
+  weight: ["400", "700"],
   subsets: ["latin"],
 });
 
@@ -19,7 +34,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={PressStart.className}>
+    <html lang="en" className={`
+      ${PressStart.className}
+      ${CormorantGaramond.className}
+      ${RalewayFont.className}
+      ${PoppinsFont.className}
+    `}>
       <body >
         <Header/>
         {children}
