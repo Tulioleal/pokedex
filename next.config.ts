@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
-import withPlaiceholder from "@plaiceholder/next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    turbo: {
+      moduleIdStrategy: 'deterministic',
+    },
+  },
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -13,4 +17,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withPlaiceholder(nextConfig);
+export default nextConfig;
