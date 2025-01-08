@@ -5,27 +5,3 @@
   gap: 1.5rem;
   padding: 1rem;
 }
-
-.pokemonCard {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 300px;
-  height: 100%;
-  padding: 1rem;
-  border: 2px solid var(--secondary-text-color);
-  background-color: var(--secondary-color);
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.number {
-  
-}
-
-.name {
-  font-size: 1rem;
-  font-weight: 700;
-  text-decoration: none;
-}

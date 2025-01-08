@@ -1,14 +1,9 @@
 "use client"
 
-import { Pokemon, PokemonSimple } from "@/types";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { PokemonSimple } from "@/types";
+import { useState } from "react";
 import styles from  "./PokemonList.module.css";
-import { getPokemon } from "@/db/getPokemon";
-import Image from "next/image";
-import { getPokemonNo } from "@/lib/getPokemonNo";
-import { Spinner } from "../Spinner/Spinner";
-import { capitalizePokemonName } from "@/lib/utils";
+import { PokemonCard } from "../PokemonCard/PokemonCard";
 
 const POKEMON_LIMIT = 50;
 
@@ -47,50 +42,5 @@ export const PokemonList = (
         } 
       </section>
     </section>
-  );
-}
-
-const PokemonCard = (
-  { pokemon } :
-  { pokemon: PokemonSimple }
-) => {
-  const [pokemonData, setPokemonData] = useState<Pokemon | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchPokemon() {
-      const res = await getPokemon(pokemon.name);
-
-      setPokemonData(res);
-    }
-    fetchPokemon().then(() => setLoading(false));
-  }, [pokemon.name]);
-
-  if (loading || !pokemonData)
-    return (
-      <div className={styles.pokemonCard}>
-        <Spinner/>
-      </div>
-    );
-
-  return (
-    <Link href={`/pokedex/${pokemon.name}`} key={pokemon.name}>
-      <div className={styles.pokemonCard}>
-        <h3 className={styles.number}>
-          No.{getPokemonNo(pokemonData.id)}
-        </h3>
-        <Image
-          src={
-            pokemonData?.sprites.other["official-artwork"].front_default ||
-            pokemonData?.sprites.front_default ||
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/201.png" // Default image (Unown)
-          }
-          width={150}
-          height={150}
-          alt={pokemonData.name}
-        />
-        <h4 className={styles.name}>{capitalizePokemonName(pokemonData.name)}</h4>
-      </div>
-    </Link>
   );
 }
