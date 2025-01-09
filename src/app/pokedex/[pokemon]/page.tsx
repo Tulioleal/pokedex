@@ -1,5 +1,9 @@
 import { getPokemonSlugs } from "@/db/getAllPokemon";
 import { getPokemon } from "@/db/getPokemon";
+import { capitalizePokemonName } from "@/lib/utils";
+import styles from "./pokemonPage.module.scss";
+import Image from "next/image";
+import { UNOWN_IMAGE } from "@/lib/const";
 
 export async function generateStaticParams() {
   const slugs = await getPokemonSlugs();
@@ -17,7 +21,24 @@ export default async function PokemonPage({
   
   return (
     <>
-      <h1>{pokemon.name}</h1>
+      <h1>{capitalizePokemonName(pokemon.name)}</h1>
+      <figure
+        className={`
+          ${styles.image}
+          ${styles[pokemon.types.map((type) => type.type.name).join("-")]}`
+        }
+      >
+        <Image
+          src={
+            pokemon.sprites.other["official-artwork"].front_default ||
+            pokemon.sprites.front_default ||
+            UNOWN_IMAGE // Default image (Unown)
+          }
+          width={280}
+          height={280}
+          alt={pokemon.name}
+        />
+      </figure>
       <ul>
         {
           JSON.stringify(pokemon)
