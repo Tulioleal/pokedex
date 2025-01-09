@@ -1,0 +1,34 @@
+@use 'sass:list';
+@import "@/styles/_variables.scss";
+
+.type_badge {
+  display: inline-block;
+  padding: 0.5rem;
+  border-radius: 100%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  img {
+    height: 16px;
+    width: 16px;
+  }
+}
+
+@each $type, $list in $types {
+  .#{$type} {
+    background-color: list.nth($list, 1);
+    
+    &:hover {
+      background-color: list.nth($list, 3);
+    }
+  }
+}
