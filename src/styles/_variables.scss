@@ -1,0 +1,22 @@
+@import '_colors.scss';
+
+$types: (
+  bug: $type-bug $type-bug-background $type-bug-border,
+  dark: $type-dark $type-dark-background $type-dark-border,
+  dragon: $type-dragon $type-dragon-background $type-dragon-border,
+  electric: $type-electric $type-electric-background $type-electric-border,
+  fairy: $type-fairy $type-fairy-background $type-fairy-border,
+  fighting: $type-fighting $type-fighting-background $type-fighting-border,
+  fire: $type-fire $type-fire-background $type-fire-border,
+  flying: $type-flying $type-flying-background $type-flying-border,
+  ghost: $type-ghost $type-ghost-background $type-ghost-border,
+  grass: $type-grass $type-grass-background $type-grass-border,
+  ground: $type-ground $type-ground-background $type-ground-border,
+  ice: $type-ice $type-ice-background $type-ice-border,
+  normal: $type-normal $type-normal-background $type-normal-border,
+  poison: $type-poison $type-poison-background $type-poison-border,
+  psychic: $type-psychic $type-psychic-background $type-psychic-border,
+  rock: $type-rock $type-rock-background $type-rock-border,
+  steel: $type-steel $type-steel-background $type-steel-border,
+  water: $type-water $type-water-background $type-water-border,
+);
