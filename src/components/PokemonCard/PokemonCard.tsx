@@ -14,11 +14,16 @@ export const PokemonCard = (
 ) => {
   const [pokemonData, setPokemonData] = useState<Pokemon | null>(null);
   const [loading, setLoading] = useState(true);
+  const [pokemonSize, setPokemonSize] = useState<110 | 150 | 200>(150);
 
   useEffect(() => {
     async function fetchPokemon() {
       const res = await getPokemon(pokemon.name);
+      const size = res.height > 15 ?
+        200 : res.height >= 8 ?
+        150 : 110;
 
+      setPokemonSize(size);
       setPokemonData(res);
     }
     fetchPokemon().then(() => setLoading(false));
@@ -38,11 +43,6 @@ export const PokemonCard = (
     `}>
       <Link href={`/pokedex/${pokemon.name}`} key={pokemon.name}>
         <section className={styles.top}>
-          <header className={styles.header}>
-            <h4 className={styles.name}>
-              {capitalizePokemonName(pokemonData.name)}
-            </h4>
-          </header>
           <figure className={styles.image}>
             <Image
               src={
@@ -50,8 +50,8 @@ export const PokemonCard = (
                 pokemonData?.sprites.front_default ||
                 "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/201.png" // Default image (Unown)
               }
-              width={150}
-              height={150}
+              width={pokemonSize}
+              height={pokemonSize}
               alt={pokemonData.name}
             />
           </figure>
@@ -65,9 +65,9 @@ export const PokemonCard = (
         </div>
         <div className={styles.abilities}>
           {pokemonData.abilities.map((stat) => (
-            <p key={stat.ability.name} className={styles.ability}>
+            <Link href={`/ability/${stat.ability.name}`} className={styles.ability} key={stat.ability.name}>
               {capitalizePokemonName(stat.ability.name)}
-            </p>
+            </Link>
           ))}
         </div>
       </section>

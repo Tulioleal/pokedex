@@ -1,43 +1,27 @@
-$types: (
-  bug: var(--type-bug-background) var(--type-bug-border),
-  dark: var(--type-dark-background) var(--type-dark-border),
-  dragon: var(--type-dragon-background) var(--type-dragon-border),
-  electric: var(--type-electric-background) var(--type-electric-border),
-  fairy: var(--type-fairy-background) var(--type-fairy-border),
-  fighting: var(--type-fighting-background) var(--type-fighting-border),
-  fire: var(--type-fire-background) var(--type-fire-border),
-  flying: var(--type-flying-background) var(--type-flying-border),
-  ghost: var(--type-ghost-background) var(--type-ghost-border),
-  grass: var(--type-grass-background) var(--type-grass-border),
-  ground: var(--type-ground-background) var(--type-ground-border),
-  ice: var(--type-ice-background) var(--type-ice-border),
-  normal: var(--type-normal-background) var(--type-normal-border),
-  poison: var(--type-poison-background) var(--type-poison-border),
-  psychic: var(--type-psychic-background) var(--type-psychic-border),
-  rock: var(--type-rock-background) var(--type-rock-border),
-  steel: var(--type-steel-background) var(--type-steel-border),
-  water: var(--type-water-background) var(--type-water-border),
-);
+@use 'sass:list';
+@import '@/styles/_variables.scss';
+@import '@/styles/_colors.scss';
 
 .pokemonCard {
   height: 100%;
-  border: 5px solid var(--background-color);
+  border: 5px solid $background;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
   overflow: hidden;
 }
 
 @each $type1, $list1 in $types {
-  $backgroundColor1: nth($list1, 1);
-  $borderColor1: nth($list1, 2);
+  $backgroundColor1: list.nth($list1, 2);
+  $borderColor1: list.nth($list1, 3);
 
   @each $type2, $list2 in $types {
-    $backgroundColor2: nth($list2, 1);
-    $borderColor2: nth($list2, 2);
+    $backgroundColor2: list.nth($list2, 2);
+    $borderColor2: list.nth($list2, 3);
+    
     .type-#{$type1}--#{$type2} {
       border: 5px solid $borderColor1;
-
-      .top {
+      
+      .image {
         background: linear-gradient(180deg, $backgroundColor2, $backgroundColor1);
       }
 
@@ -49,7 +33,8 @@ $types: (
 
   .type-#{$type1} {
     border: 5px solid $borderColor1;
-    .top {
+
+    .image {
       background-color: $backgroundColor1;
     }
 
@@ -66,23 +51,32 @@ $types: (
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
-  background-color: var(--type-normal-background);
-  color: var(--text-color);
-  padding: 1rem 0;
+  background-color: $type-normal-background;
 
   .header {
     width: 100%;
     display: flex;
     justify-content: center;
+    padding: .5rem 0;
   }
   
   .image {
     width: 100%;
+    min-width: 200px;
+    min-height: 200px;
     display: flex;
     justify-content: center;
-    color: var(--text-color);
-  }
+    align-items: center;
+    color: $text;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+        filter: brightness(1.1);
+      }
+    }
   
   .name {
     font-size: 1rem;
@@ -97,10 +91,12 @@ $types: (
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background-color: $background;
+  color: $secondary;
   padding: 1rem;
+  padding-bottom: 0;
   position: relative;
+  min-height: 100px;
   
   .types {
     position: absolute;
@@ -114,13 +110,24 @@ $types: (
   
   .abilities {
     width: 100%;
+    height: 100%;
     font-size: 1rem;
-    gap: 8px;
+    margin-top: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: .5rem;
     
     .ability {
-      text-align: left;
-      margin-top: 8px;
       font-size: 14px;
+      color: $secondary;
+      text-decoration: none;
+      text-align: left;
+      width: fit-content;
+
+      &:hover {
+        color: #dedede;
+      }
     }
   }
 }
