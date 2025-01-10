@@ -1,6 +1,12 @@
 @use 'sass:list';
 @import '@/styles/_variables.scss';
 
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+
 .image {
   border-radius: 100%;
   max-width: 320px;
@@ -9,28 +15,30 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+
+  border: 8px solid $secondary;
 }
 
 @each $type1, $list1 in $types {
   .#{$type1} {
     background: radial-gradient(
-      list.nth($list1, 2),
-      list.nth($list1, 1),
-      list.nth($list1, 3)
+      64.22% 64.22% at 50% 50%,
+      list.nth($list1, 2) 65%,
+      list.nth($list1, 3) 100%
     );
 
-    border: 8px solid $secondary;
+    border: 8px solid list.nth($list1, 3);
   }
 
   @each $type2, $list2 in $types {
     .#{$type1}-#{$type2} {
       background: radial-gradient(
-        list.nth($list1, 2),
-        list.nth($list1, 1),
-        list.nth($list1, 3)
+        64.22% 64.22% at 50% 50%,
+        list.nth($list2, 2) 0%,
+        list.nth($list1, 2) 100%
       );
 
-      border: 8px solid list.nth($list2, 2);
+      border: 8px solid list.nth($list1, 3);
     }
     
   }

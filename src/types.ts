@@ -256,7 +256,7 @@ export interface Sprite {
   };
 }
 
-interface Stat {
+export interface Stat {
   base_stat: number;
   effort: number;
   stat: {
@@ -284,6 +284,15 @@ type PokemonType =
   | 'dark'
   | 'steel'
   | 'fairy';
+
+export type stat = {
+  hp: number;
+  attack: number;
+  defense: number;
+  specialAttack: number;
+  specialDefense: number;
+  speed: number;
+}
 
 export interface Type {
   slot: number;

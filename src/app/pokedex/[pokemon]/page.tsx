@@ -4,6 +4,7 @@ import { capitalizePokemonName } from "@/lib/utils";
 import styles from "./pokemonPage.module.scss";
 import Image from "next/image";
 import { UNOWN_IMAGE } from "@/lib/const";
+import LineChart from "@/components/StatsChart/StatsChart";
 
 export async function generateStaticParams() {
   const slugs = await getPokemonSlugs();
@@ -22,23 +23,34 @@ export default async function PokemonPage({
   return (
     <>
       <h1>{capitalizePokemonName(pokemon.name)}</h1>
-      <figure
-        className={`
-          ${styles.image}
-          ${styles[pokemon.types.map((type) => type.type.name).join("-")]}`
-        }
-      >
-        <Image
-          src={
-            pokemon.sprites.other["official-artwork"].front_default ||
-            pokemon.sprites.front_default ||
-            UNOWN_IMAGE // Default image (Unown)
+      <section className={styles.container}>
+        <figure
+          className={`
+            ${styles.image}
+            ${styles[pokemon.types.map((type) => type.type.name).join("-")]}`
           }
-          width={280}
-          height={280}
-          alt={pokemon.name}
+        >
+          <Image
+            src={
+              pokemon.sprites.other["official-artwork"].front_default ||
+              pokemon.sprites.front_default ||
+              UNOWN_IMAGE // Default image (Unown)
+            }
+            width={280}
+            height={280}
+            alt={pokemon.name}
+          />
+        </figure>
+        <LineChart
+          hp={pokemon.stats[0].base_stat}
+          attack={pokemon.stats[1].base_stat}
+          defense={pokemon.stats[2].base_stat}
+          specialAttack={pokemon.stats[3].base_stat}
+          specialDefense={pokemon.stats[4].base_stat}
+          speed={pokemon.stats[5].base_stat}
+          label={`${capitalizePokemonName(pokemon.name)} stats`}
         />
-      </figure>
+      </section>
       <ul>
         {
           JSON.stringify(pokemon)
