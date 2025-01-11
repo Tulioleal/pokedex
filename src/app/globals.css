@@ -36,5 +36,5 @@ h3 {
 
 a {
   text-decoration: none;
-  color: var(--highlight-color);
+  color: inherit;
 }
