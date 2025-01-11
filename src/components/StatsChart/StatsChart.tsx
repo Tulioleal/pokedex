@@ -1,8 +1,10 @@
 "use client"
 
-import { Radar } from 'react-chartjs-2';
-import 'chart.js/auto';
 import { FC } from 'react';
+import 'chart.js/auto';
+import { Radar } from 'react-chartjs-2';
+import { ChartData, ChartOptions } from 'chart.js/auto';
+import styles from './StatsChart.module.scss';
 
 interface Stats {
   hp: number;
@@ -26,13 +28,13 @@ const LineChart:FC<StatsChartProps> = ({
   speed,
   label
 }) => {
-  const data = {
+  const data:ChartData<'radar'> = {
     labels: [
       "HP",
-      "Attack",
-      "Defense",
+      "   Attack   ",
+      "  Defense   ",
       "Speed",
-      "Sp. Attack",
+      " Sp. Attack ",
       "Sp. Defense",
     ],
     datasets: [
@@ -54,14 +56,12 @@ const LineChart:FC<StatsChartProps> = ({
     ],
   };
 
-  const options = {
-    type: 'radar',
+  const options:ChartOptions<'radar'> = {
     responsive: true,
     maintainAspectRatio: true,
-    data,
     plugins: {
       title: {
-        display: true,
+        display: false,
         text: label
       },
       legend: {
@@ -83,9 +83,9 @@ const LineChart:FC<StatsChartProps> = ({
   };
 
   return (
-    <div style={{ width: '400px', height: '400px' }}>
+    <section className={styles.container}>
       <Radar data={data} options={options}/>
-    </div>
+    </section>
   );
 };
 
