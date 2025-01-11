@@ -1,0 +1,36 @@
+@use '@/styles/_colors';
+
+.sizeComparisonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 5% 0;
+
+  .sizeComparison {
+    width: 100%;
+    height: min-content;
+    max-height: 400px;
+    padding: 2rem 2rem 0;
+    border-radius: 1rem;
+    background-color: colors.$secondary-background;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+
+    figure {
+      img {
+        max-width: 100%;
+        vertical-align: bottom;
+      }
+    }
+  }
+
+  .sizes {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+    width: 100%;
+  }
+}
