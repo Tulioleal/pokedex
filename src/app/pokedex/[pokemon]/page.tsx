@@ -6,7 +6,7 @@ import Image from "next/image";
 import { UNOWN_IMAGE } from "@/lib/const";
 import LineChart from "@/components/StatsChart/StatsChart";
 import Link from "next/link";
-import TrainerRed from "../../../../public/trainer_red.png";
+import SizeComparison from "@/components/SizeComparison/SizeComparison";
 
 export async function generateStaticParams() {
   const slugs = await getPokemonSlugs();
@@ -70,37 +70,7 @@ export default async function PokemonPage({
           speed={pokemon.stats[5].base_stat}
           label={`${capitalizePokemonName(pokemon.name)} stats`}
         />
-        <section className={styles.sizeComparisonCOntainer}>
-          <h2>Size comparison</h2>
-          <div className={styles.sizeComparison}>
-            <figure>
-              <Image
-                src={pokemon.sprites.other.showdown.front_default || UNOWN_IMAGE}
-                width={pokemon.height > 38 ? 380 : pokemon.height * 10}
-                height={pokemon.height > 38 ? 380 : pokemon.height * 10}
-                alt={pokemon.name}
-              />
-            </figure>
-            <figure>
-              <Image
-                src={TrainerRed}
-                width={94}
-                height={160}
-                alt="Trainer Red"
-              />
-            </figure>
-          </div>
-          <div className={styles.sizes}>
-            <div className={styles.sizeComparisonItem}>
-              <p>Height</p>
-              <p>{pokemon.height}</p>
-            </div>
-            <div className={styles.sizeComparisonItem}>
-              <p>Weight</p>
-              <p>{pokemon.weight}</p>
-            </div>
-          </div>
-        </section>
+        <SizeComparison {...pokemon} />
       </main>
     </>
   );
