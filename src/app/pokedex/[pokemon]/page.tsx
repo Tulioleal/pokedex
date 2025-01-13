@@ -7,6 +7,7 @@ import { UNOWN_IMAGE } from "@/lib/const";
 import LineChart from "@/components/StatsChart/StatsChart";
 import Link from "next/link";
 import SizeComparison from "@/components/SizeComparison/SizeComparison";
+import TypeEffectiveness from "@/components/TypeEffectiveness/TypeEffectiveness";
 
 export async function generateStaticParams() {
   const slugs = await getPokemonSlugs();
@@ -71,6 +72,7 @@ export default async function PokemonPage({
           label={`${capitalizePokemonName(pokemon.name)} stats`}
         />
         <SizeComparison {...pokemon} />
+        <TypeEffectiveness types={pokemon.types.map((type) => type.type.name)} />
       </main>
     </>
   );

@@ -265,7 +265,7 @@ export interface Stat {
   };
 }
 
-type PokemonType =
+export type PokemonType =
   | 'normal'
   | 'fire'
   | 'water'

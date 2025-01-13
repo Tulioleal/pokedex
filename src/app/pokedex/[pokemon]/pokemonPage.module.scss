@@ -67,10 +67,10 @@
       background: radial-gradient(
         64.22% 64.22% at 50% 50%,
         list.nth($list2, 2) 10%,
-        list.nth($list1, 3) 100%
+        list.nth($list1, 1) 100%
       );
 
-      border: 4px solid list.nth($list1, 3);
+      border: 4px solid list.nth($list1, 1);
     }
     
   }

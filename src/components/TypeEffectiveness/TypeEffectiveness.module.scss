@@ -1,0 +1,64 @@
+@use 'sass:list';
+@use '@/styles/_variables';
+@use '@/styles/_colors';
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tbody {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.normal {
+  background-color: colors.$type-normal-background;
+  border: 2px solid colors.$type-normal-border;
+}
+
+.double {
+  background-color: colors.$type-fighting-background;
+  border: 2px solid colors.$type-fighting-border;
+}
+
+.immune {
+  background-color: colors.$type-ghost-background;
+  border: 2px solid colors.$type-ghost-border;
+}
+
+.half {
+  background-color: colors.$type-bug-background;
+  border: 2px solid colors.$type-bug-border;
+}
+
+.td {
+  padding: 1rem;
+  // border: 1px solid colors.$secondary;
+  border-radius: 1rem;
+  // background-color: colors.$secondary-background;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  min-height: 81px;
+}
+
+.types {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.type {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  // gap: 4px;
+  // align-items: center;
+
+  sub {
+    font-size: 12px;
+  }
+}

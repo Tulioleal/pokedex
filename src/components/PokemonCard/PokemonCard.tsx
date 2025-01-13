@@ -60,7 +60,7 @@ export const PokemonCard = (
       <section className={styles.bottom}>
         <div className={styles.types}>
           {pokemonData.types.map((type, i) =>
-            <TypeBadge {...type} key={i}/>
+            <TypeBadge name={type.type.name} key={i}/>
           )}
         </div>
         <div className={styles.abilities}>
