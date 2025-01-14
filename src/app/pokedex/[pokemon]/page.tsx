@@ -8,6 +8,7 @@ import LineChart from "@/components/StatsChart/StatsChart";
 import Link from "next/link";
 import SizeComparison from "@/components/SizeComparison/SizeComparison";
 import TypeEffectiveness from "@/components/TypeEffectiveness/TypeEffectiveness";
+import EvolutionChain from "@/components/EvolutionChain/EvolutionChain";
 
 export async function generateStaticParams() {
   const slugs = await getPokemonSlugs();
@@ -73,7 +74,7 @@ export default async function PokemonPage({
         />
         <SizeComparison {...pokemon} />
         <TypeEffectiveness types={pokemon.types.map((type) => type.type.name)} />
-        {pokemon.evolution_chain.url}
+        <EvolutionChain {...pokemon.evolution_chain}/>
       </main>
     </>
   );

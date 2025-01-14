@@ -1,6 +1,6 @@
 "use client"
 
-import { PokemonSimple } from "@/types";
+import { generalLink } from "@/types";
 import { useState } from "react";
 import styles from  "./PokemonList.module.css";
 import { PokemonCard } from "../PokemonCard/PokemonCard";
@@ -9,7 +9,7 @@ const POKEMON_LIMIT = 50;
 
 export const PokemonList = (
   { pokemonList } :
-  { pokemonList: PokemonSimple[] }
+  { pokemonList: generalLink[] }
 ) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pages = Math.ceil(pokemonList.length / POKEMON_LIMIT);

@@ -1,5 +1,4 @@
 import { getPokemon } from "@/db/getPokemon";
-import { Pokemon, PokemonSimple } from "@/types";
 import { useEffect, useState } from "react";
 import { Spinner } from "../Spinner/Spinner";
 import Link from "next/link";
@@ -7,10 +6,12 @@ import Image from "next/image";
 import styles from "./PokemonCard.module.scss";
 import { capitalizePokemonName } from "@/lib/utils";
 import TypeBadge from "../TypeBadge/TypeBadge";
+import { Pokemon } from "@/interfaces";
+import { generalLink } from "@/types";
 
 export const PokemonCard = (
   { pokemon } :
-  { pokemon: PokemonSimple }
+  { pokemon: generalLink }
 ) => {
   const [pokemonData, setPokemonData] = useState<Pokemon | null>(null);
   const [loading, setLoading] = useState(true);
