@@ -1,0 +1,50 @@
+@use '@/styles/_colors';
+
+.evolutionChain {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  padding: 1rem;
+  background-color: colors.$secondary-background;
+  border-radius: 1rem;
+}
+
+.evolutions {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.level1,
+.level2,
+.level3 {
+  display: flex;
+  justify-content: space-evenly;
+
+  .pokemon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem .5rem .5rem .5rem;
+  }
+}
+
+// ↓
+
+.level1 {
+  width: 100%;
+}
+
+.chain {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.arrow {
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  width: min-content;
+  color: colors.$highlight;
+  transform: rotate(90deg);
+}
