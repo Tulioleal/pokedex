@@ -73,6 +73,7 @@ export default async function PokemonPage({
         />
         <SizeComparison {...pokemon} />
         <TypeEffectiveness types={pokemon.types.map((type) => type.type.name)} />
+        {pokemon.evolution_chain.url}
       </main>
     </>
   );

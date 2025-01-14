@@ -1,14 +1,26 @@
-import { Pokemon } from "../types";
+import { Pokemon, Species } from "../interfaces";
 
 async function getPokemon(pokemonName: string) {
-  const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+  const pokemonPromise = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
 
-  if (!pokemon.ok) {
-    const unown = await fetch(`https://pokeapi.co/api/v2/pokemon/unown`)
-    return await unown.json() as Pokemon;
+  if (!pokemonPromise.ok) {
+    const unownPromise = await fetch(`https://pokeapi.co/api/v2/pokemon/unown`)
+    const pokemonSpecies = await fetch(`https://pokeapi.co/api/v2/pokemon-species/unown`)
+
+    return {
+      ...await unownPromise.json(),
+      ...await pokemonSpecies.json()
+    } as Pokemon & Species;
   }
 
-  return await pokemon.json() as Pokemon;
+  const pokemon = await pokemonPromise.json() as Pokemon;
+  const pokemonSpecies = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}`)
+
+
+  return {
+    ...pokemon,
+    ...await pokemonSpecies.json()
+  } as Pokemon & Species;
 }
 
 export {

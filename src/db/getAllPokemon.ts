@@ -1,4 +1,4 @@
-import { PokemonListResponse } from "../types";
+import { PokemonListResponse } from "../interfaces";
 
 async function getAllPokemon() {
   const data = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=10000000&offset=0`)
