@@ -74,7 +74,7 @@ const LineChart:FC<StatsChartProps> = ({
           display: false,
         },
         suggestedMin: 0,
-        suggestedMax: 200,
+        suggestedMax: 150,
         ticks: {
           display: false,
         }
