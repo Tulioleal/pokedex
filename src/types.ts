@@ -64,6 +64,11 @@ type versionDetail = {
   rarity: number;
   version: generalLink;
 }
+type chain = {
+  evolves_to: chain[];
+  is_baby: boolean;
+  species: generalLink;
+}
 
 export type {
   ability,
@@ -74,5 +79,6 @@ export type {
   statInfo,
   type,
   gameIndex,
-  versionDetail
+  versionDetail,
+  chain
 }

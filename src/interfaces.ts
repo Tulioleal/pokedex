@@ -1,4 +1,4 @@
-import { ability, cry, gameIndex, generalLink, statInfo, type } from "./types";
+import { ability, chain, cry, gameIndex, generalLink, statInfo, type } from "./types";
 
 interface HeldItem {
   item: generalLink;
@@ -264,8 +264,14 @@ interface PokemonListResponse {
   "results": generalLink[]
 }
 
+interface EvolutionChain {
+  chain: chain;
+  id: number;
+}
+
 export type {
   Pokemon,
   Species,
-  PokemonListResponse
+  PokemonListResponse,
+  EvolutionChain
 }
