@@ -1,0 +1,18 @@
+.container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip {
+  position: absolute;
+  top: 100%;
+  right: 50%;
+  transform: translateX(50%);
+  margin-bottom: 5px;
+  padding: 5px;
+  background-color: black;
+  color: white;
+  border-radius: 3px;
+  white-space: nowrap;
+  z-index: 1;
+}

@@ -6,6 +6,7 @@ import { getPokemon } from "@/db/getPokemon";
 import Image from "next/image";
 import Link from "next/link";
 import { capitalizePokemonName } from "@/lib/utils";
+import Tooltip from "../Tooltip/Tooltip";
 
 type EvolutionChainProps = generalLink
 
@@ -83,8 +84,8 @@ const PokemonSprite = async ({ name, firstPokemon }: { name: string, firstPokemo
           {">"}
         </span>
       }
-      <Link href={`/pokedex/${pokemon.name}`} key={pokemon.name}>
-      <abbr content={capitalizePokemonName(pokemon.name)}>
+      <Tooltip message={capitalizePokemonName(pokemon.name)}>
+        <Link href={`/pokedex/${pokemon.name}`} key={pokemon.name}>
           <Image
             alt={pokemon.name}
             src={
@@ -93,9 +94,9 @@ const PokemonSprite = async ({ name, firstPokemon }: { name: string, firstPokemo
             }
             width={50}
             height={50}
-          />
-        </abbr>
-      </Link>
+            />
+        </Link>
+      </Tooltip>
     </>
   )
 }
