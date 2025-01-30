@@ -1,4 +1,4 @@
-import { PokemonType } from "@/types";
+import { pokemonType } from "@/types";
 import { FC } from "react";
 import { TypeWeakness } from "@/lib/TypeWeakness";
 import TypeBadge from "../TypeBadge/TypeBadge";
@@ -7,7 +7,7 @@ import { POKEMON_TYPES } from "@/lib/const";
 import { filterDuplicatedTypes } from "@/lib/utils";
 
 const TypeEffectiveness:FC<{
-  types: PokemonType[]
+  types: pokemonType[]
 }> = ({
   types
 }) => {
@@ -21,11 +21,12 @@ const TypeEffectiveness:FC<{
 
   return (
     <section className={styles.container}>
+      <h2>Effectiveness table</h2>
       <table>
         <tbody className={styles.tbody}>
           <tr>
             <td className={`${styles.td} ${styles.normal}`}>
-            <h4>Neutral</h4>
+            <h4>Neutral to</h4>
               <span className={styles.types}>
                 {
                   normalEffectiveness.length === 0 ?
@@ -34,9 +35,6 @@ const TypeEffectiveness:FC<{
                       .map((type) => (
                         <span key={type.type} >
                           <TypeBadge name={type.type} />
-                          <sub>
-                            1x
-                          </sub>
                         </span>
                       ))
                 }
@@ -44,8 +42,41 @@ const TypeEffectiveness:FC<{
             </td>
           </tr>
           <tr>
+            <td className={`${styles.td} ${styles.immune}`}>
+              <h4>Immune to</h4>
+              <span className={styles.types}>
+                {
+                  ZERO_EFFECTIVENESS.length === 0 ?
+                    "None" :
+                    ZERO_EFFECTIVENESS.map((type) => (
+                      <span key={type} className={styles.type}>
+                        <TypeBadge name={type} />
+                      </span>
+                    ))
+                }
+            </span>
+            </td>
+          </tr>
+          <tr>
+            <td className={`${styles.td} ${styles.half}`}>
+              <h4>Resistant to</h4>
+              <span className={styles.types}>
+                {
+                halfEffectiveness.length === 0 ?
+                  "None" :
+                  halfEffectiveness
+                    .map((type, key) => (
+                      <span key={key} className={styles.type}>
+                        <TypeBadge name={type.type} />
+                      </span>
+                    ))
+                  }
+              </span>
+            </td>
+          </tr>
+          <tr>
             <td className={`${styles.td} ${styles.double}`}>
-              <h4>Weak</h4>
+              <h4>Weak against</h4>
               <span className={styles.types}>
                 {
                   doubleEffectiveness.length === 0 ?
@@ -59,45 +90,6 @@ const TypeEffectiveness:FC<{
                     </span>
                   ))
                 }
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td className={`${styles.td} ${styles.immune}`}>
-              <h4>Immune</h4>
-              <span className={styles.types}>
-                {
-                  ZERO_EFFECTIVENESS.length === 0 ?
-                    "None" :
-                    ZERO_EFFECTIVENESS.map((type) => (
-                      <span key={type} className={styles.type}>
-                        <TypeBadge name={type} />
-                        <sub>
-                          0x
-                        </sub>
-                      </span>
-                    ))
-                }
-            </span>
-            </td>
-          </tr>
-          <tr>
-            <td className={`${styles.td} ${styles.half}`}>
-              <h4>Strong</h4>
-              <span className={styles.types}>
-                {
-                halfEffectiveness.length === 0 ?
-                  "None" :
-                  halfEffectiveness
-                    .map((type, key) => (
-                      <span key={key} className={styles.type}>
-                        <TypeBadge name={type.type} />
-                        <sub>
-                          {`1/${type.multiplier}x`}
-                        </sub>
-                      </span>
-                    ))
-                  }
               </span>
             </td>
           </tr>
