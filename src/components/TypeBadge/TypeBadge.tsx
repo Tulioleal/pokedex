@@ -1,16 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import styles from './TypeBadge.module.scss';
-import { PokemonType } from '@/types';
-import Link from 'next/link';
+import { pokemonType } from '@/types';
+import { capitalizePokemonName } from '@/lib/utils';
+import Tooltip from '../Tooltip/Tooltip';
 
 const TypeBadge: React.FC<{
-    name: PokemonType;
+    name: pokemonType;
   }> = ({ 
     name
    }) => {
   return (
-    <Link href={`/type/${name}`}>
+    <Tooltip message={capitalizePokemonName(name)}>
       <figure className={`${styles.type_badge} ${styles[name.toLocaleLowerCase()]}`}>
         <img
           src={`/icons/${name}.svg`}
@@ -18,7 +19,7 @@ const TypeBadge: React.FC<{
           loading="lazy"
         />
       </figure>
-    </Link>
+    </Tooltip>
   );
 };
 
