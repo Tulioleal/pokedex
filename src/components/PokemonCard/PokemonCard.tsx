@@ -6,14 +6,15 @@ import Image from "next/image";
 import styles from "./PokemonCard.module.scss";
 import { capitalizePokemonName } from "@/lib/utils";
 import TypeBadge from "../TypeBadge/TypeBadge";
+import { generalLink, pokemonType } from "@/types";
+import { PokemonSpecies } from "pokenode-ts";
 import { Pokemon } from "@/interfaces";
-import { generalLink } from "@/types";
 
 export const PokemonCard = (
   { pokemon } :
   { pokemon: generalLink }
 ) => {
-  const [pokemonData, setPokemonData] = useState<Pokemon | null>(null);
+  const [pokemonData, setPokemonData] = useState<Pokemon & PokemonSpecies | null>(null);
   const [loading, setLoading] = useState(true);
   const [pokemonSize, setPokemonSize] = useState<110 | 150 | 200>(150);
 
@@ -47,7 +48,7 @@ export const PokemonCard = (
           <figure className={styles.image}>
             <Image
               src={
-                pokemonData?.sprites.other["official-artwork"].front_default ||
+                pokemonData?.sprites.other?.["official-artwork"].front_default ||
                 pokemonData?.sprites.front_default ||
                 "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/201.png" // Default image (Unown)
               }
@@ -61,7 +62,7 @@ export const PokemonCard = (
       <section className={styles.bottom}>
         <div className={styles.types}>
           {pokemonData.types.map((type, i) =>
-            <TypeBadge name={type.type.name} key={i}/>
+            <TypeBadge name={type.type.name as pokemonType} key={i}/>
           )}
         </div>
         <div className={styles.abilities}>
