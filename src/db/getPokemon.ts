@@ -1,4 +1,5 @@
-import { Pokemon, Species } from "../interfaces";
+import { Pokemon } from "@/interfaces";
+import { PokemonSpecies } from "pokenode-ts";
 
 async function getPokemon(pokemonName: string) {
   const pokemonPromise = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
@@ -10,7 +11,7 @@ async function getPokemon(pokemonName: string) {
     return {
       ...await unownPromise.json(),
       ...await pokemonSpecies.json()
-    } as Pokemon & Species;
+    } as Pokemon & PokemonSpecies;
   }
 
   const pokemon = await pokemonPromise.json() as Pokemon;
@@ -20,7 +21,7 @@ async function getPokemon(pokemonName: string) {
   return {
     ...pokemon,
     ...await pokemonSpecies.json()
-  } as Pokemon & Species;
+  } as Pokemon & PokemonSpecies;
 }
 
 export {

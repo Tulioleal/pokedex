@@ -1,10 +1,10 @@
-import { PokemonType } from "@/types"
+import { pokemonType } from "@/types"
 
 export const TypeWeakness: {
   [type: string]: {
-    double: PokemonType[],
-    half: PokemonType[],
-    zero: PokemonType[],
+    double: pokemonType[],
+    half: pokemonType[],
+    zero: pokemonType[],
   }
 } = {
   normal: {
