@@ -5,7 +5,7 @@
 
 .tooltip {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 5px);
   right: 50%;
   transform: translateX(50%);
   margin-bottom: 5px;
