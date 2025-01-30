@@ -21,17 +21,28 @@ html, body {
 }
 
 main {
-  max-width: 100vh;
+  max-width: 2080px;
   width: 100%;
-  padding: 2rem 1rem;
+  padding: 2rem 5%;
   text-align: center;
   margin: 0 auto;
 }
+
+section {
+  max-width: 500px;
+  width: 100%;
+}
+
+
 
 h1,
 h2,
 h3 {
   font-family: 'Press Start 2P', sans-serif;
+}
+
+h2 {
+  margin-bottom: 2rem;
 }
 
 a {
