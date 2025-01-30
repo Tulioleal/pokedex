@@ -84,6 +84,7 @@ const LineChart:FC<StatsChartProps> = ({
 
   return (
     <section className={styles.container}>
+      <h2>Base stats</h2>
       <Radar data={data} options={options}/>
     </section>
   );
