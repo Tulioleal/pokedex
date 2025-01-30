@@ -1,4 +1,3 @@
-import { generalLink } from "@/types";
 import { EvolutionChain as EvolutionChainInterface } from "pokenode-ts";
 import { FC } from "react";
 import styles from './EvolutionChain.module.scss';
@@ -8,7 +7,9 @@ import Link from "next/link";
 import { capitalizePokemonName } from "@/lib/utils";
 import Tooltip from "../Tooltip/Tooltip";
 
-type EvolutionChainProps = generalLink
+type EvolutionChainProps = {
+  url: string;
+}
 
 const EvolutionChain:FC<EvolutionChainProps> = async ({
   url
@@ -30,7 +31,6 @@ const EvolutionChain:FC<EvolutionChainProps> = async ({
       })
     ).flat(3),
   }
-
 
   return (
     <section>
@@ -55,7 +55,6 @@ const EvolutionChain:FC<EvolutionChainProps> = async ({
                 {evolution.level3.map((evolution) => (
                   <span key={evolution.species.name} className={styles.pokemon}>
                     <PokemonSprite name={evolution.species.name}/>
-                    {evolution.species.name}
                   </span>
                 ))}
               </div>
@@ -89,11 +88,11 @@ const PokemonSprite = async ({ name, firstPokemon }: { name: string, firstPokemo
           <Image
             alt={pokemon.name}
             src={
-              pokemon.sprites.other.home.front_default || 
+              pokemon.sprites.other?.home.front_default || 
               "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/201.png" // Default image (Unown)
             }
-            width={50}
-            height={50}
+            width={100}
+            height={100}
             />
         </Link>
       </Tooltip>

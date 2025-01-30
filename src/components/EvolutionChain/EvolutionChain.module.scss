@@ -3,6 +3,7 @@
 .evolutionChain {
   display: flex;
   flex-direction: column;
+  width: min-content;
   margin: 20px 0;
   padding: 1rem;
   background-color: colors.$secondary-background;
@@ -27,8 +28,6 @@
     padding: 1rem .5rem .5rem .5rem;
   }
 }
-
-// ↓
 
 .level1 {
   width: 100%;
