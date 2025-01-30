@@ -1,0 +1,71 @@
+@use 'sass:list';
+@use '@/styles/_variables';
+@use '@/styles/_colors';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.image {
+  border-radius: 100%;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border: 4px solid colors.$secondary;
+}
+
+.types {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+@each $type1, $list1 in variables.$types {
+  .#{$type1} {
+    background: radial-gradient(
+      64.22% 64.22% at 50% 50%,
+      list.nth($list1, 1) 50%,
+      list.nth($list1, 3) 100%
+    );
+
+    border: 4px solid list.nth($list1, 3);
+  }
+
+  .#{$type1}-pill {
+    font-size: 14px;
+    color: colors.$secondary !important;
+    padding: .25rem;
+    border-radius: 16px;
+    font-weight: 600;
+    background-color: list.nth($list1, 1);
+    cursor: default;
+
+    min-width: 80px;
+
+    &:hover {
+      box-shadow: none;
+    }
+    
+  }
+
+  @each $type2, $list2 in variables.$types {
+    .#{$type1}-#{$type2} {
+      background: radial-gradient(
+        64.22% 64.22% at 50% 50%,
+        list.nth($list2, 2) 10%,
+        list.nth($list1, 1) 100%
+      );
+
+      border: 4px solid list.nth($list1, 1);
+    }
+    
+  }
+}
