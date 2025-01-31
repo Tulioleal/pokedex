@@ -1,4 +1,4 @@
-import { PokemonType } from "@/types";
+import { pokemonType } from "@/types";
 
 export function capitalizePokemonName(name: string): string {
   if (!name) return name;
@@ -7,10 +7,10 @@ export function capitalizePokemonName(name: string): string {
   return words.join(' ');
 }
 
-export const filterDuplicatedTypes = (list1: PokemonType[], list2: PokemonType[])
-  : { type: PokemonType, multiplier: number }[] => {
+export const filterDuplicatedTypes = (list1: pokemonType[], list2: pokemonType[])
+  : { type: pokemonType, multiplier: number }[] => {
   const types = list1.filter((type) => !list2.includes(type));
-  let duplicates = JSON.parse(JSON.stringify(types)) as PokemonType[];
+  let duplicates = JSON.parse(JSON.stringify(types)) as pokemonType[];
   duplicates = duplicates.filter((item, index) => duplicates.indexOf(item) !== index);
 
   const res = types.map((type) => ({ type, multiplier: duplicates.includes(type) ? 4 : 2 }));
@@ -23,4 +23,8 @@ export const filterDuplicatedTypes = (list1: PokemonType[], list2: PokemonType[]
       .filter((item) => item !== type.type)
     return false;
   }).sort((a, b) => b.multiplier - a.multiplier);
+}
+
+export const getPokemonTypeClassName = (types: pokemonType[]) => {
+  return types.join("-")
 }

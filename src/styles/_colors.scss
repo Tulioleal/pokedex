@@ -14,76 +14,76 @@ $type-normal: #A8A77A;
 $type-normal-background: #bbbbbb;
 $type-normal-border: #6D6D4E;
 
+$modifier: 20%;
 
 $type-bug:#94bc4a;
-$type-bug-background:color.adjust($type-bug, $lightness: 20%);
-$type-bug-border:color.adjust($type-bug, $lightness: -20%);
+$type-bug-background:color.adjust($type-bug, $lightness: $modifier);
+$type-bug-border:color.adjust($type-bug, $lightness: -$modifier);
 
 $type-dark:#736c75;
-$type-dark-background:color.adjust($type-dark, $lightness: 20%);
-$type-dark-border:color.adjust($type-dark, $lightness: -20%);
+$type-dark-background:color.adjust($type-dark, $lightness: $modifier);
+$type-dark-border:color.adjust($type-dark, $lightness: -$modifier);
 
 $type-dragon:#6a7baf;
-$type-dragon-border:color.adjust($type-dragon, $lightness: -20%);
-$type-dragon-background:color.adjust($type-dragon, $lightness: 20%);
+$type-dragon-border:color.adjust($type-dragon, $lightness: -$modifier);
+$type-dragon-background:color.adjust($type-dragon, $lightness: $modifier);
 
 $type-electric:#e5c531;
-$type-electric-background:color.adjust($type-electric, $lightness: 20%);
-$type-electric-border:color.adjust($type-electric, $lightness: -20%);
+$type-electric-background:color.adjust($type-electric, $lightness: $modifier);
+$type-electric-border:color.adjust($type-electric, $lightness: -$modifier);
 
 $type-fairy:#e397d1;
-$type-fairy-background:color.adjust($type-fairy, $lightness: 20%);
-$type-fairy-border:color.adjust($type-fairy, $lightness: -20%);
+$type-fairy-background:color.adjust($type-fairy, $lightness: $modifier);
+$type-fairy-border:color.adjust($type-fairy, $lightness: -$modifier);
 
 $type-fighting:#cb5f48;
-$type-fighting-background:color.adjust($type-fighting, $lightness: 20%);
-$type-fighting-border:color.adjust($type-fighting, $lightness: -20%);
+$type-fighting-background:color.adjust($type-fighting, $lightness: $modifier);
+$type-fighting-border:color.adjust($type-fighting, $lightness: -$modifier);
 
 $type-fire:#ea7a3c;
-$type-fire-background:color.adjust($type-fire, $lightness: 20%);
-$type-fire-border:color.adjust($type-fire, $lightness: -20%);
+$type-fire-background:color.adjust($type-fire, $lightness: $modifier);
+$type-fire-border:color.adjust($type-fire, $lightness: -$modifier);
 
 $type-flying:#7da6de;
-$type-flying-background:color.adjust($type-flying, $lightness: 20%);
-$type-flying-border:color.adjust($type-flying, $lightness: -20%);
+$type-flying-background:color.adjust($type-flying, $lightness: $modifier);
+$type-flying-border:color.adjust($type-flying, $lightness: -$modifier);
 
 $type-ghost:#846ab6;
-$type-ghost-background:color.adjust($type-ghost, $lightness: 20%);
-$type-ghost-border:color.adjust($type-ghost, $lightness: -20%);
+$type-ghost-background:color.adjust($type-ghost, $lightness: $modifier);
+$type-ghost-border:color.adjust($type-ghost, $lightness: -$modifier);
 
 $type-grass:#71c558;
-$type-grass-background:color.adjust($type-grass, $lightness: 20%);
-$type-grass-border:color.adjust($type-grass, $lightness: -20%);
+$type-grass-background:color.adjust($type-grass, $lightness: $modifier);
+$type-grass-border:color.adjust($type-grass, $lightness: -$modifier);
 
 $type-ground:#cc9f4f;
-$type-ground-background:color.adjust($type-ground, $lightness: 20%);
-$type-ground-border:color.adjust($type-ground, $lightness: -20%);
+$type-ground-background:color.adjust($type-ground, $lightness: $modifier);
+$type-ground-border:color.adjust($type-ground, $lightness: -$modifier);
 
 $type-ice:#70cbd4;
-$type-ice-background:color.adjust($type-ice, $lightness: 20%);
-$type-ice-border:color.adjust($type-ice, $lightness: -20%);
+$type-ice-background:color.adjust($type-ice, $lightness: $modifier);
+$type-ice-border:color.adjust($type-ice, $lightness: -$modifier);
 
 $type-normal:#aab09f;
-$type-normal-background:color.adjust($type-normal, $lightness: 20%);
-$type-normal-border:color.adjust($type-normal, $lightness: -20%);
+$type-normal-background:color.adjust($type-normal, $lightness: $modifier);
+$type-normal-border:color.adjust($type-normal, $lightness: -$modifier);
 
 $type-poison:#b468b7;
-$type-poison-background:color.adjust($type-poison, $lightness: 20%);
-$type-poison-border:color.adjust($type-poison, $lightness: -20%);
+$type-poison-background:color.adjust($type-poison, $lightness: $modifier);
+$type-poison-border:color.adjust($type-poison, $lightness: -$modifier);
 
 $type-psychic:#e5709b;
-$type-psychic-background:color.adjust($type-psychic, $lightness: 20%);
-$type-psychic-border:color.adjust($type-psychic, $lightness: -20%);
+$type-psychic-background:color.adjust($type-psychic, $lightness: $modifier);
+$type-psychic-border:color.adjust($type-psychic, $lightness: -$modifier);
 
 $type-rock:#b2a061;
-$type-rock-background:color.adjust($type-rock, $lightness: 20%);
-$type-rock-border:color.adjust($type-rock, $lightness: -20%);
+$type-rock-background:color.adjust($type-rock, $lightness: $modifier);
+$type-rock-border:color.adjust($type-rock, $lightness: -$modifier);
 
 $type-steel:#89a1b0;
-$type-steel-background:color.adjust($type-steel, $lightness: 20%);
-$type-steel-border:color.adjust($type-steel, $lightness: -20%);
+$type-steel-background:color.adjust($type-steel, $lightness: $modifier);
+$type-steel-border:color.adjust($type-steel, $lightness: -$modifier);
 
 $type-water:#539ae2;
-$type-water-background:color.adjust($type-water, $lightness: 20%);
-$type-water-border:color.adjust($type-water, $lightness: -20%);
-
+$type-water-background:color.adjust($type-water, $lightness: $modifier);
+$type-water-border:color.adjust($type-water, $lightness: -$modifier);
