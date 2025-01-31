@@ -24,7 +24,7 @@ export const PokemonList = (
   }
 
   return (
-    <section>
+    <article>
       <button
         disabled={currentPage - 1 < 1}
         onClick={() => handlePageChange(currentPage - 1)}
@@ -34,13 +34,13 @@ export const PokemonList = (
         disabled={currentPage + 1 > pages}
         onClick={() => handlePageChange(currentPage + 1)}
       >Next</button>
-      <section className={styles.pokemonList}>
+      <div className={styles.pokemonList}>
         {
           pokemonList.slice((currentPage * POKEMON_LIMIT) - POKEMON_LIMIT, currentPage * POKEMON_LIMIT).map((pokemon) => (
             <PokemonCard pokemon={pokemon} key={pokemon.name}/>
           ))
         } 
-      </section>
-    </section>
+      </div>
+    </article>
   );
 }
