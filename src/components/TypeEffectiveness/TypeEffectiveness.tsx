@@ -21,7 +21,7 @@ const TypeEffectiveness:FC<{
 
   return (
     <section className={styles.container}>
-      <h2>Effectiveness table</h2>
+      <h2>Effectiveness</h2>
       <table>
         <tbody className={styles.tbody}>
           <tr>

@@ -22,21 +22,40 @@
 .normal {
   background-color: colors.$type-normal-background;
   border: 2px solid colors.$type-normal-border;
+  box-shadow: -4px 4px 1px 0px colors.$type-normal;
+  transition: box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.double,
+.immune,
+.half{
+  transition: box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: none;
+  }
 }
 
 .double {
   background-color: colors.$type-fighting-background;
   border: 2px solid colors.$type-fighting-border;
+  box-shadow: -4px 4px 1px 0px colors.$type-fighting;
 }
 
 .immune {
   background-color: colors.$type-ghost-background;
   border: 2px solid colors.$type-ghost-border;
+  box-shadow: -4px 4px 1px 0px colors.$type-ghost;
 }
 
 .half {
   background-color: colors.$type-bug-background;
   border: 2px solid colors.$type-bug-border;
+  box-shadow: -4px 4px 1px 0px colors.$type-bug;
 }
 
 .td {
