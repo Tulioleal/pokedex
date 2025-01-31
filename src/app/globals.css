@@ -3,7 +3,7 @@
   --secondary-color: #f3f3f3; /* White - For text and background elements */
   --accent-color: #FFCC01; /* Yellow - For highlights and important buttons */
   --background-color: #E1E1E1; /* Light Gray - For the main background */
-  --secondary-background-color: #c9c9c9; /* Dark Gray - For secondary text */
+  --secondary-background-color: #6aa76e; /* Dark Gray - For secondary text */
   --text-color: #0d0d0d; /* Black - For primary text */
   --highlight-color: #1E90FF; /* Blue - For links and interactive elements */
   --error-color: #FFA500; /* Orange - For error messages and warnings */
@@ -33,6 +33,24 @@ section {
   width: 100%;
 }
 
+
+@media (max-width: 1440px) {
+  section {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 1024px) {
+  section {
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    max-width: none;
+  }
+}
 
 
 h1,
