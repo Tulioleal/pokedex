@@ -1,7 +1,6 @@
 "use client"
 
 import getPokemonDescription from "@/db/getPokemonDescription";
-import styles from "./PokemonDescription.module.scss"
 import { TypeAnimation } from 'react-type-animation';
 import { useEffect, useState } from "react";
 import { FlavorText } from "pokenode-ts";
@@ -23,14 +22,14 @@ const PokemonDescription = ({
   if (!data) return <></>
 
   return (
-    <span className={styles['letter-by-letter-container']}>
-    <TypeAnimation
-      style={{ whiteSpace: 'pre-line', height: '60px', display: 'inline-block' }}
-      sequence={[data.flavor_text]}
-      cursor={false}
-      
-    />
-  </span>
+    <p>
+      <TypeAnimation
+        style={{ whiteSpace: 'pre-line', height: '60px', display: 'inline-block' }}
+        sequence={[data.flavor_text]}
+        cursor={false}
+        speed={75}
+      />
+    </p>
   );
 }
 
