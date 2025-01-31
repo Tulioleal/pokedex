@@ -66,11 +66,7 @@ export const PokemonCard = (
           )}
         </div>
         <div className={styles.abilities}>
-          {pokemonData.abilities.map((stat) => (
-            <Link href={`/ability/${stat.ability.name}`} className={styles.ability} key={stat.ability.name}>
-              {capitalizePokemonName(stat.ability.name)}
-            </Link>
-          ))}
+          {capitalizePokemonName(pokemonData.name)}
         </div>
       </section>
     </div>
