@@ -3,7 +3,8 @@ import Image from "next/image";
 import PokemonDescription from "../PokemonDescription/PokemonDescription";
 import styles from "./PrimaryInfo.module.scss"
 import { Pokemon } from "@/interfaces";
-import { capitalizePokemonName } from "@/lib/utils";
+import { capitalizePokemonName, getPokemonTypeClassName } from "@/lib/utils";
+import { pokemonType } from "@/types";
 
 const PrimaryInfo = (pokemon:Pokemon) => {
   return (
@@ -12,8 +13,8 @@ const PrimaryInfo = (pokemon:Pokemon) => {
       <figure
         className={`
           ${styles.image}
-          ${styles[pokemon.types.map((type) => type.type.name).join("-")]}`
-        }
+          ${styles[getPokemonTypeClassName(pokemon.types.map((type) => type.type.name as pokemonType))]}
+        `}
       >
         <Image
           src={
@@ -21,8 +22,8 @@ const PrimaryInfo = (pokemon:Pokemon) => {
             pokemon.sprites.front_default ||
             UNOWN_IMAGE // Default image (Unown)
           }
-          width={320}
-          height={320}
+          width={300}
+          height={300}
           alt={pokemon.name}
         />
       </figure>
