@@ -1,18 +1,35 @@
+@use 'sass:list';
+@use 'sass:color';
 @use '@/styles/_colors';
+@use '@/styles/_variables';
+
+.container {
+  width: 100%;
+  max-width: 500px;
+}
 
 .evolutionChain {
   display: flex;
   flex-direction: column;
-  width: min-content;
-  margin: 20px 0;
+  width: 100%;
+  max-width: none !important;
+  margin: 20px auto;
   padding: 1rem;
-  background-color: colors.$secondary-background;
+  background-color: color.adjust(colors.$secondary-background, $lightness: 15%);
   border-radius: 1rem;
+  border: 4px solid color.adjust(colors.$secondary-background, $lightness: -15%);
+  box-shadow: -5px 5px 0px colors.$secondary-background;
+  transition: box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: none;
+  }
 }
 
 .evolutions {
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .level1,
@@ -26,11 +43,19 @@
     flex-direction: column;
     align-items: center;
     padding: 1rem .5rem .5rem .5rem;
+
+    img {
+      transition: transform 0.2s ease-in-out;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
   }
 }
 
 .level1 {
-  width: 100%;
+  flex-direction: column;
+  align-items: center;
 }
 
 .chain {
@@ -46,4 +71,17 @@
   width: min-content;
   color: colors.$highlight;
   transform: rotate(90deg);
+}
+
+.pokemon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+@each $type1, $list1 in variables.$types {
+  .#{$type1} {
+    background: list.nth($list1, 2);
+  }
 }

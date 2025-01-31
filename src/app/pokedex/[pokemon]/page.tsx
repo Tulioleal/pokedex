@@ -35,10 +35,11 @@ export default async function PokemonPage({
           specialDefense={pokemon.stats[4].base_stat}
           speed={pokemon.stats[5].base_stat}
           label={`${capitalizePokemonName(pokemon.name)} stats`}
+          type={pokemon.types[0].type.name as pokemonType}
         />
         <SizeComparison {...pokemon} />
         <TypeEffectiveness types={pokemon.types.map((type) => type.type.name as pokemonType)} />
-        <EvolutionChain {...pokemon.evolution_chain}/>
+        <EvolutionChain url={pokemon.evolution_chain.url} type={pokemon.types[0].type.name as pokemonType}/>
       </main>
     </>
   );

@@ -6,13 +6,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { capitalizePokemonName } from "@/lib/utils";
 import Tooltip from "../Tooltip/Tooltip";
+import { pokemonType } from "@/types";
 
 type EvolutionChainProps = {
   url: string;
+  type: pokemonType
 }
 
 const EvolutionChain:FC<EvolutionChainProps> = async ({
-  url
+  url, type
 }) => {
   const evolutionChain = await getEvolutionChain(url);
 
@@ -33,11 +35,16 @@ const EvolutionChain:FC<EvolutionChainProps> = async ({
   }
 
   return (
-    <section>
-      <h2>Evolution Chain</h2>
-      <div className={styles.evolutionChain}>
+    <article className={styles.container}>
+      <h2>Evolution</h2>
+      <div
+        className={`
+          ${styles.evolutionChain}
+          ${styles[styles[type]]}
+        `}
+      >
         <span className={styles.level1}>
-          <PokemonSprite firstPokemon
+          <PokemonSprite
             name={pokemonEvolutionChain.firstPokemon.name}
           />
         </span>
@@ -48,13 +55,14 @@ const EvolutionChain:FC<EvolutionChainProps> = async ({
                 <span className={styles.pokemon}>
                   <PokemonSprite
                     name={evolution.species.name}
+                    lastPokemon={evolution.level3.length === 0}
                   />
                 </span>
               </div>
               <div className={styles.level3}>
                 {evolution.level3.map((evolution) => (
                   <span key={evolution.species.name} className={styles.pokemon}>
-                    <PokemonSprite name={evolution.species.name}/>
+                    <PokemonSprite name={evolution.species.name} lastPokemon/>
                   </span>
                 ))}
               </div>
@@ -62,7 +70,7 @@ const EvolutionChain:FC<EvolutionChainProps> = async ({
           ))}  
         </div>
       </div>
-    </section>
+    </article>
   );
 }
 
@@ -73,16 +81,11 @@ async function getEvolutionChain(url: string) {
   return await evolutionChainPromise.json() as EvolutionChainInterface;
 }
 
-const PokemonSprite = async ({ name, firstPokemon }: { name: string, firstPokemon?: boolean }) => {
+const PokemonSprite = async ({ name, lastPokemon }: { name: string, lastPokemon?: boolean }) => {
   const pokemon = await getPokemon(name);
 
   return (
-    <>
-      {
-        !firstPokemon && <span className={styles.arrow}>
-          {">"}
-        </span>
-      }
+    <div className={styles.pokemon}>
       <Tooltip message={capitalizePokemonName(pokemon.name)}>
         <Link href={`/pokedex/${pokemon.name}`} key={pokemon.name}>
           <Image
@@ -96,6 +99,11 @@ const PokemonSprite = async ({ name, firstPokemon }: { name: string, firstPokemo
             />
         </Link>
       </Tooltip>
-    </>
+      {
+        !lastPokemon && <span className={styles.arrow}>
+          {">"}
+        </span>
+      }
+    </div>
   )
 }

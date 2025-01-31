@@ -1,5 +1,15 @@
+@use '@/styles/sizes';
+
 .container {
   aspect-ratio: 1 / 1;
+
+  padding: 0 1rem;
+
+  @media (max-width: sizes.$tablet) {
+    section {
+      max-width: 400px;
+    }
+  }
 }
 
 .title {
