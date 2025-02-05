@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Press_Start_2P, Cardo, Poppins, Raleway } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header/Header";
 
 const PressStart = Press_Start_2P({
   weight: "400",
@@ -41,7 +40,6 @@ export default function RootLayout({
       ${PoppinsFont.className}
     `}>
       <body >
-        <Header/>
         {children}
       </body>
     </html>
