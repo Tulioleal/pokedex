@@ -8,6 +8,7 @@ import TypeEffectiveness from "@/components/TypeEffectiveness/TypeEffectiveness"
 import EvolutionChain from "@/components/EvolutionChain/EvolutionChain";
 import { pokemonType } from "@/types";
 import PrimaryInfo from "@/components/PrimaryInfo/PrimaryInfo";
+import PokedexWrapper from "@/components/PokedexWrapper/PokedexWrapper";
 
 export async function generateStaticParams() {
   const slugs = await getPokemonSlugs();
@@ -24,7 +25,7 @@ export default async function PokemonPage({
   const pokemon = await getPokemon(pokemonName);
   
   return (
-    <>
+    <PokedexWrapper openDefault>
       <main className={styles.container}>
         <PrimaryInfo {...pokemon} />
         <LineChart
@@ -41,6 +42,6 @@ export default async function PokemonPage({
         <TypeEffectiveness types={pokemon.types.map((type) => type.type.name as pokemonType)} />
         <EvolutionChain url={pokemon.evolution_chain.url} type={pokemon.types[0].type.name as pokemonType}/>
       </main>
-    </>
+    </PokedexWrapper>
   );
 }
