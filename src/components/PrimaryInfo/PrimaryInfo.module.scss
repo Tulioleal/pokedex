@@ -19,7 +19,7 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  border: 4px solid colors.$secondary;
+  // border: 4px solid colors.$secondary;
 }
 
 .types {
@@ -35,8 +35,13 @@
       list.nth($list1, 1) 50%,
       list.nth($list1, 3) 100%
     );
+    transition: all 0.2s ease-in-out;
+    box-shadow: 5px 0px 0px list.nth($list1, 3);
 
-    border: 4px solid list.nth($list1, 3);
+    &:hover {
+      box-shadow: none;
+      transform: scale(1.02);
+    }
   }
 
   .#{$type1}-pill {
@@ -49,11 +54,6 @@
     cursor: default;
 
     min-width: 80px;
-
-    &:hover {
-      transform: scale(1.02);
-    }
-    
   }
 
   @each $type2, $list2 in variables.$types {
@@ -63,14 +63,12 @@
         list.nth($list2, 2) 10%,
         list.nth($list1, 1) 100%
       );
-  
-      border: 4px solid list.nth($list1, 1);
       transition: all 0.2s ease-in-out;
-      box-shadow: -5px 5px 0px list.nth($list1, 3);
+      box-shadow:  4px 4px 1px 0px list.nth($list1, 3);
   
       &:hover {
         box-shadow: none;
-        transform: scale(1.02);
+        transform: translate(4px, 4px);
       }
     }
   }
