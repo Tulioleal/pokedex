@@ -33,13 +33,6 @@ section {
   width: 100%;
 }
 
-
-@media (max-width: 1440px) {
-  section {
-    max-width: 400px;
-  }
-}
-
 @media (max-width: 1024px) {
   section {
     max-width: none;
@@ -60,7 +53,7 @@ h3 {
 }
 
 h2 {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 a {
