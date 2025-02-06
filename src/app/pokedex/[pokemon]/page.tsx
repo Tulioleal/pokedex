@@ -28,6 +28,9 @@ export default async function PokemonPage({
     <PokedexWrapper openDefault>
       <main className={styles.container}>
         <PrimaryInfo {...pokemon} />
+        <SizeComparison {...pokemon} />
+        <EvolutionChain url={pokemon.evolution_chain.url} type={pokemon.types[0].type.name as pokemonType}/>
+        <TypeEffectiveness types={pokemon.types.map((type) => type.type.name as pokemonType)} />
         <LineChart
           hp={pokemon.stats[0].base_stat}
           attack={pokemon.stats[1].base_stat}
@@ -38,9 +41,6 @@ export default async function PokemonPage({
           label={`${capitalizePokemonName(pokemon.name)} stats`}
           type={pokemon.types[0].type.name as pokemonType}
         />
-        <SizeComparison {...pokemon} />
-        <TypeEffectiveness types={pokemon.types.map((type) => type.type.name as pokemonType)} />
-        <EvolutionChain url={pokemon.evolution_chain.url} type={pokemon.types[0].type.name as pokemonType}/>
       </main>
     </PokedexWrapper>
   );
