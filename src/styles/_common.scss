@@ -1,0 +1,19 @@
+@mixin card(
+  $background-color,
+  $border-color,
+  $shadow-color
+) {
+  $y: 4px;
+  $x: 4px;
+
+  background-color: $background-color;
+  border: 3px solid $border-color;
+  box-shadow: $x $y 1px 0px $shadow-color;
+  transition: all 0.2s ease-in-out;
+  border-radius: 1rem;
+
+  &:hover {
+    box-shadow: none;
+    transform: translate($x, $y);
+  }
+}
