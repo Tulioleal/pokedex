@@ -29,7 +29,7 @@
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  max-width: 800px;
+  max-width: 600px;
   aspect-ratio: 800/720;
   overflow: hidden;
   border-radius: 12.5%;
@@ -48,14 +48,10 @@
     outline: none;
     border: none;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: .9rem;
 
     &:hover {
       color: colors.$crimson;
-    }
-
-    @media (max-width: sizes.$tablet) {
-      font-size: .9rem;
     }
 
     @media (max-width: sizes.$mobile) {
@@ -63,8 +59,9 @@
     }
   }
 
-  .close {
-    top: -3rem;
+  .close,
+  .back {
+    top: -2rem;
 
     @media (max-width: sizes.$tablet) {
       top: -6vw;

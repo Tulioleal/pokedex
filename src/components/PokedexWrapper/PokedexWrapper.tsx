@@ -2,6 +2,7 @@
 
 import { FC, ReactNode, useState } from 'react';
 import styles from './PokedexWrapper.module.scss';
+import { useRouter } from 'next/navigation';
 
 interface PokedexWrapperProps {
   children?: string | ReactNode
@@ -13,6 +14,7 @@ const PokedexWrapper:FC<PokedexWrapperProps> = ({
   openDefault = false
 }) => {
   const [open, setOpen] = useState<boolean>(openDefault);
+  const router = useRouter();
 
   return (
     <div className={styles.container}>
@@ -29,8 +31,13 @@ const PokedexWrapper:FC<PokedexWrapperProps> = ({
           <div className={styles.line}>
             <div className={styles.content}>
               {
-                open && <button className={`${styles.button} ${styles.close}`} onClick={() => setOpen(!open)}>
+                open && !openDefault && <button className={`${styles.button} ${styles.close}`} onClick={() => setOpen(!open)}>
                   Close
+                </button>
+              }
+              {
+                openDefault && <button className={`${styles.button} ${styles.back}`} onClick={() => router.back()}>
+                  Back
                 </button>
               }
               {
