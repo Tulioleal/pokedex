@@ -68,6 +68,9 @@ const TypeEffectiveness:FC<{
                     .map((type, key) => (
                       <span key={key} className={styles.type}>
                         <TypeBadge name={type.type} />
+                        <sub>
+                          {`x${type.multiplier}`}
+                        </sub>
                       </span>
                     ))
                   }
@@ -76,7 +79,7 @@ const TypeEffectiveness:FC<{
           </tr>
           <tr>
             <td className={`${styles.td} ${styles.double}`}>
-              <h4>Weak against</h4>
+              <h4>Weak to</h4>
               <span className={styles.types}>
                 {
                   doubleEffectiveness.length === 0 ?
@@ -85,7 +88,7 @@ const TypeEffectiveness:FC<{
                     <span key={type.type} className={styles.type}>
                       <TypeBadge name={type.type} />
                       <sub>
-                        {type.multiplier === 4 ? " 4x" : " 2x"}
+                        {type.multiplier === 4 ? "x4": "x2"}
                       </sub>
                     </span>
                   ))

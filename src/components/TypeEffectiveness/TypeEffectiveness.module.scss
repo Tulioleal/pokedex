@@ -1,6 +1,7 @@
 @use 'sass:list';
 @use '@/styles/_variables';
 @use '@/styles/_colors';
+@use '@/styles/_common';
 
 .container {
   display: flex;
@@ -16,46 +17,39 @@
 .tbody {
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: .75rem;
 }
 
 .normal {
-  background-color: colors.$type-normal-background;
-  border: 2px solid colors.$type-normal-border;
-  box-shadow: -4px 4px 1px 0px colors.$type-normal;
-  transition: box-shadow 0.2s ease-in-out;
-
-  &:hover {
-    box-shadow: none;
-  }
-}
-
-.double,
-.immune,
-.half{
-  transition: box-shadow 0.2s ease-in-out;
-
-  &:hover {
-    box-shadow: none;
-  }
+  @include common.card(
+    colors.$type-normal-background,
+    colors.$type-normal-border,
+    colors.$type-normal
+  );
 }
 
 .double {
-  background-color: colors.$type-fighting-background;
-  border: 2px solid colors.$type-fighting-border;
-  box-shadow: -4px 4px 1px 0px colors.$type-fighting;
+  @include common.card(
+    colors.$type-fighting-background,
+    colors.$type-fighting-border,
+    colors.$type-fighting
+  );
 }
 
 .immune {
-  background-color: colors.$type-ghost-background;
-  border: 2px solid colors.$type-ghost-border;
-  box-shadow: -4px 4px 1px 0px colors.$type-ghost;
+  @include common.card(
+    colors.$type-ghost-background,
+    colors.$type-ghost-border,
+    colors.$type-ghost
+  );
 }
 
 .half {
-  background-color: colors.$type-bug-background;
-  border: 2px solid colors.$type-bug-border;
-  box-shadow: -4px 4px 1px 0px colors.$type-bug;
+  @include common.card(
+    colors.$type-bug-background,
+    colors.$type-bug-border,
+    colors.$type-bug
+  );
 }
 
 .td {
