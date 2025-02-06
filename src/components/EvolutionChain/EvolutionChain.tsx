@@ -40,7 +40,7 @@ const EvolutionChain:FC<EvolutionChainProps> = async ({
       <div
         className={`
           ${styles.evolutionChain}
-          ${styles[styles[type]]}
+          ${styles[type]}
         `}
       >
         <span className={styles.level1}>
@@ -91,7 +91,7 @@ const PokemonSprite = async ({ name, lastPokemon }: { name: string, lastPokemon?
           <Image
             alt={pokemon.name}
             src={
-              pokemon.sprites.other?.home.front_default || 
+              pokemon.sprites.front_default || 
               "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/201.png" // Default image (Unown)
             }
             width={100}
