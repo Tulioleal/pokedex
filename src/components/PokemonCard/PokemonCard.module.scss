@@ -1,18 +1,19 @@
 @use 'sass:list';
+@use 'sass:color';
 @use '@/styles/_variables';
 @use '@/styles/_colors';
+@use '@/styles/_common';
 
 .pokemonCard {
   height: 100%;
-  border: 5px solid colors.$background;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-  border-radius: 1rem;
   overflow: hidden;
+  border-radius: 1rem;
 }
 
 @each $type1, $list1 in variables.$types {
   $backgroundColor1: list.nth($list1, 2);
   $borderColor1: list.nth($list1, 3);
+  $backgroundBottomColor1: list.nth($list1, 3);
 
   @each $type2, $list2 in variables.$types {
     $backgroundColor2: list.nth($list2, 2);
@@ -26,7 +27,7 @@
       }
 
       .bottom {
-        background-color: $borderColor1;
+        background-color: $backgroundBottomColor1;
       }
     }
   }
@@ -39,7 +40,7 @@
     }
 
     .bottom {
-      background-color: $borderColor1;
+      background-color: $backgroundBottomColor1;
     }
   }
 }
@@ -71,10 +72,11 @@
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     transition: all 0.3s ease;
+    filter: brightness(.95);
 
       &:hover {
         transform: scale(1.05);
-        filter: brightness(1.1);
+        filter: brightness(1.05);
       }
     }
   
