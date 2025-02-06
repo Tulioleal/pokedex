@@ -14,22 +14,24 @@ const PokemonDescription = ({
 
   useEffect(() => {
     getPokemonDescription(id)
-      .then((res) => {
-        setData(res)
-      })
+      .then((res) => setData(res))
   }, []);
 
   if (!data) return <></>
 
   return (
-    <p>
-      <TypeAnimation
-        style={{ whiteSpace: 'pre-line', height: '60px', display: 'inline-block' }}
-        sequence={[data.flavor_text]}
-        cursor={false}
-        speed={75}
-      />
-    </p>
+    <TypeAnimation
+      style={{
+        whiteSpace: 'pre-line',
+        minHeight: `${data.flavor_text.length/20}rem`,
+        lineHeight:1.5,
+        display: 'inline-block'
+      }}
+      sequence={[data.flavor_text]}
+      cursor={false}
+      speed={75}
+      wrapper="p"
+    />
   );
 }
 
