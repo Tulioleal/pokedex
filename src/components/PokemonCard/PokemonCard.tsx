@@ -1,3 +1,5 @@
+"use client"
+
 import { getPokemon } from "@/db/getPokemon";
 import { useEffect, useState } from "react";
 import { Spinner } from "../Spinner/Spinner";
@@ -8,7 +10,8 @@ import { capitalizePokemonName } from "@/lib/utils";
 import TypeBadge from "../TypeBadge/TypeBadge";
 import { generalLink, pokemonType } from "@/types";
 import { PokemonSpecies } from "pokenode-ts";
-import { Pokemon } from "@/interfaces";
+import { Move as PokemonMove, Pokemon } from "@/interfaces";
+import Move from "./Move/Move";
 
 export const PokemonCard = (
   { pokemon } :
@@ -17,14 +20,33 @@ export const PokemonCard = (
   const [pokemonData, setPokemonData] = useState<Pokemon & PokemonSpecies | null>(null);
   const [loading, setLoading] = useState(true);
   const [pokemonSize, setPokemonSize] = useState<110 | 150 | 200>(150);
+  const [moves, setMoves] = useState<PokemonMove[]>([]);
 
   useEffect(() => {
     async function fetchPokemon() {
+      let index = 0;
       const res = await getPokemon(pokemon.name);
       const size = res.height > 15 ?
         200 : res.height >= 8 ?
         150 : 110;
 
+      const filteredMoves = res.moves
+        .filter((move) => move.version_group_details[0].move_learn_method.name === "level-up")
+
+      if (res.evolves_from_species) {
+        index = filteredMoves.length -1;
+      }
+
+      const randomMoves = filteredMoves.length > 1 ?
+        [
+          filteredMoves[index == 0 ? 0 : index - 1],
+          filteredMoves[index == 0 ? 1 : index]
+        ] :
+        [
+          filteredMoves[0]
+        ];
+        
+      setMoves(randomMoves);
       setPokemonSize(size);
       setPokemonData(res);
     }
@@ -65,9 +87,18 @@ export const PokemonCard = (
             <TypeBadge name={type.type.name as pokemonType} key={i}/>
           )}
         </div>
-        <div className={styles.abilities}>
-          {capitalizePokemonName(pokemonData.name)}
-        </div>
+          <h3 className={styles.name}>
+            {capitalizePokemonName(pokemonData.name)}
+          </h3>
+        <ul className={styles.moves}>
+          {
+            moves.map((move, i) => (
+              <li key={i} className={styles.move}>
+                <Move url={move.move.url} />
+              </li>
+            ))
+          }
+        </ul>
       </section>
     </div>
   );

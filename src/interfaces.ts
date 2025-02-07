@@ -8,7 +8,7 @@ interface HeldItem {
   }[];
 }
 
-interface Move {
+export interface Move {
   move: generalLink;
   version_group_details: Array<{
     level_learned_at: number;
