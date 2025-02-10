@@ -21,7 +21,7 @@ const Move:FC<MoveProps> =  ({url}) => {
        setMove(moveTemp);
     })
     
-   }, []);
+   }, [url]);
 
    if (!move) {
       return null;

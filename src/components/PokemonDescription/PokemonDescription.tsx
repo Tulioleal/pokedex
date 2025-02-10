@@ -15,7 +15,7 @@ const PokemonDescription = ({
   useEffect(() => {
     getPokemonDescription(id)
       .then((res) => setData(res))
-  }, []);
+  }, [id]);
 
   if (!data) return <></>
 

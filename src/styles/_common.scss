@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use './_colors';
+
 @mixin card(
   $background-color,
   $border-color,
@@ -15,5 +18,29 @@
   &:hover {
     box-shadow: none;
     transform: translate($x, $y);
+  }
+}
+
+@mixin button(
+  $height,
+  $width,
+) {
+  height: $height;
+  width: $width;
+  background-color: color.adjust(colors.$almost_black, $lightness: 25%);
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover,
+  &:active {
+    background-color: color.adjust(colors.$almost_black, $lightness: 12.5%);
+  }
+
+  @media (hover: none) {
+    &:active {
+      background-color: color.adjust(colors.$almost_black, $lightness: 12.5%);
+      transform: scale(0.95);
+    }
   }
 }

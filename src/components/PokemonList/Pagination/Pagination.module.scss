@@ -1,0 +1,54 @@
+@use 'sass:color';
+@use '@/styles/_variables';
+@use '@/styles/_colors';
+@use '@/styles/_common';
+
+.pagination {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.button {
+  border-radius: 200%;
+  color: colors.$almost_white;
+  border: 2px solid colors.$almost_white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+
+  @include common.button(
+    30px,
+    30px,
+  );
+
+  &:hover {
+    background-color: colors.$almost_black;
+  }
+}
+
+.currentPage {
+  background-color: colors.$almost_white;
+  color: colors.$almost_black;
+  border: 2px solid colors.$almost_black;
+
+  &:hover {
+    background-color: colors.$almost_white;
+    color: inherit;
+    cursor: default;
+  }
+}
+
+.unClickable {
+  &:hover {
+    cursor: default;
+    background-color: color.adjust(colors.$almost_black, $lightness: 25%);
+    // background-color: colors.$almost_black;
+    // color: inherit;
+    // cursor: default;
+  }
+}

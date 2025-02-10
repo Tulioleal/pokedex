@@ -1,6 +1,7 @@
 @use 'sass:list';
 @use '@/styles/_variables';
 @use '@/styles/_colors';
+@use '@/styles/_common';
 
 .container {
   display: flex;
@@ -31,20 +32,16 @@
     background-color: rgba(0, 0, 0, 0.246);
     opacity: 0;
     transition: all 0.4s ease-in-out;
-
+    
     button {
-      background-color: transparent;
-      outline: none;
+      border-radius: 200%;
       border: none;
-      cursor: pointer;
-      height: 100px;
-      width: 100px;
-
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.425);
-        border-radius: 200%;
-      }
+      @include common.button(
+        100px,
+        100px,
+      );
     }
+
   }
 
   &:hover {
