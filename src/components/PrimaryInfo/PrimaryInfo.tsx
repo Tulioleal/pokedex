@@ -6,6 +6,7 @@ import { Pokemon } from "@/interfaces";
 import { capitalizePokemonName, getPokemonTypeClassName } from "@/lib/utils";
 import { pokemonType } from "@/types";
 import { FC } from "react";
+import CryButton from "./CryButton";
 
 const PrimaryInfo = (pokemon:Pokemon) => {
   return (
@@ -15,6 +16,7 @@ const PrimaryInfo = (pokemon:Pokemon) => {
         name={pokemon.name}
         image={pokemon.sprites.other["official-artwork"].front_default || UNOWN_IMAGE}
         types={pokemon.types.map((type) => type.type.name as pokemonType)}
+        cry={pokemon.cries.latest}
       />
       <div className={styles.types}>
         {
@@ -36,12 +38,14 @@ interface PrimaryImageProps {
   name:string;
   image:string;
   types:pokemonType[];
+  cry:string
 }
 
 const PrimaryImage:FC<PrimaryImageProps> = ({
   name,
   image,
-  types
+  types,
+  cry
 }) => {
   return (
     <figure
@@ -56,6 +60,7 @@ const PrimaryImage:FC<PrimaryImageProps> = ({
         height={300}
         alt={name}
       />
+      <CryButton cryUrl={cry}/>
     </figure>
   )
 }
