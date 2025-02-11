@@ -13,12 +13,17 @@ const PokedexWrapper:FC<PokedexWrapperProps> = ({
   children,
   openDefault = false
 }) => {
-  const [open, setOpen] = useState<boolean>(openDefault);
+  const [open, setOpen] = useState(openDefault);
+  const [opened, setOpened] = useState(false);
   const router = useRouter();
 
   return (
     <main className={styles.container}>
-      <div className={`${styles.pokedex} ${open ? styles.open : ''}`}>
+      <div className={`
+        ${styles.pokedex}
+        ${open && styles.open}
+        ${opened && !open && styles.closed}
+      `}>
         <div className={styles.top}>
           <div className={`${styles.corner} ${styles.left}`} />
           <div className={`${styles.corner} ${styles.right}`} />
@@ -31,14 +36,29 @@ const PokedexWrapper:FC<PokedexWrapperProps> = ({
           <div className={styles.line}>
             <div className={styles.content}>
               {
-                open && !openDefault && <button className={`${styles.button} ${styles.close}`} onClick={() => setOpen(!open)}>
-                  Close
-                </button>
+                open && !openDefault &&
+                  <button
+                    className={`
+                      ${styles.button}
+                      ${styles.close}
+                    `}
+                    onClick={() => {
+                      setOpen(!open)
+                      setOpened(true)
+                    }}
+                  > Close
+                  </button>
               }
               {
-                openDefault && <button className={`${styles.button} ${styles.back}`} onClick={() => router.back()}>
-                  Back
-                </button>
+                openDefault &&
+                  <button
+                    className={`
+                      ${styles.button}
+                      ${styles.back}
+                    `}
+                    onClick={() => router.back()}
+                  > Back
+                  </button>
               }
               {
                 children
