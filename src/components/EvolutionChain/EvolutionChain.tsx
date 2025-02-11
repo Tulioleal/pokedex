@@ -87,7 +87,7 @@ const PokemonSprite = async ({ name, lastPokemon }: { name: string, lastPokemon?
   return (
     <div className={styles.pokemon}>
       <Tooltip message={capitalizePokemonName(pokemon.name)}>
-        <Link href={`/pokedex/${pokemon.name}`} key={pokemon.name}>
+        <Link href={`/${pokemon.name}`} key={pokemon.name}>
           <Image
             alt={pokemon.name}
             src={

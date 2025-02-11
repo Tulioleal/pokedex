@@ -17,7 +17,7 @@ const PokedexWrapper:FC<PokedexWrapperProps> = ({
   const router = useRouter();
 
   return (
-    <div className={styles.container}>
+    <main className={styles.container}>
       <div className={`${styles.pokedex} ${open ? styles.open : ''}`}>
         <div className={styles.top}>
           <div className={`${styles.corner} ${styles.left}`} />
@@ -60,7 +60,7 @@ const PokedexWrapper:FC<PokedexWrapperProps> = ({
           </button>
         }
       </div>
-    </div>
+    </main>
   );
 }
 

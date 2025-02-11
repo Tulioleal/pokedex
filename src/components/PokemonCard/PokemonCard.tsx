@@ -65,7 +65,7 @@ export const PokemonCard = (
       ${styles.pokemonCard}
       ${styles[`type-${pokemonData.types.map((type) => type.type.name).join("--")}`]}
     `}>
-      <Link href={`/pokedex/${pokemon.name}`} key={pokemon.name}>
+      <Link href={`/${pokemon.name}`} key={pokemon.name}>
         <section className={styles.top}>
           <figure className={styles.image}>
             <Image
