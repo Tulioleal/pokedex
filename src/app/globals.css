@@ -20,6 +20,13 @@ html, body {
   font-family: 'Raleway', sans-serif;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+}
+
 main {
   max-width: 2080px;
   width: 100%;

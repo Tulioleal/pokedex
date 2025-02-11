@@ -39,7 +39,7 @@ export default function RootLayout({
       ${RalewayFont.className}
       ${PoppinsFont.className}
     `}>
-      <body >
+      <body>
         {children}
       </body>
     </html>
