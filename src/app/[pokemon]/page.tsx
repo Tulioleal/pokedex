@@ -16,6 +16,21 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ params: { pokemon: slug } }));
 }
 
+type Props = {
+  params: Promise<{ pokemon: string }>
+}
+
+export async function generateMetadata(
+  { params }: Props
+) {
+  const pokemonName = capitalizePokemonName((await params).pokemon)
+
+  return {
+    title: `${pokemonName} - Pokedex`,
+    description: `Learn more about ${pokemonName}`
+  }
+}
+
 export default async function PokemonPage({
   params,
 }: {

@@ -1,6 +1,6 @@
 "use client"
 
-import { FC, ReactNode, useState } from 'react';
+import { FC, ReactNode, useEffect, useState } from 'react';
 import styles from './PokedexWrapper.module.scss';
 import { useRouter } from 'next/navigation';
 
@@ -15,7 +15,28 @@ const PokedexWrapper:FC<PokedexWrapperProps> = ({
 }) => {
   const [open, setOpen] = useState(openDefault);
   const [opened, setOpened] = useState(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  const toggleOpen = () => {
+    localStorage.setItem('pokedexOpen', JSON.stringify(!open));
+    setOpen(!open);
+  }
+
+  useEffect(() => {
+    setLoading(true);
+    const pokedexOpen = localStorage.getItem('pokedexOpen');
+  
+    if (pokedexOpen) {
+      setOpen(JSON.parse(pokedexOpen));
+    }
+
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <main className={styles.container}>
@@ -40,7 +61,7 @@ const PokedexWrapper:FC<PokedexWrapperProps> = ({
                   <button
                     className={`${styles.button} ${styles.close}`}
                     onClick={() => {
-                      setOpen(!open)
+                      toggleOpen()
                       setOpened(true)
                     }}
                   > Close
@@ -69,7 +90,7 @@ const PokedexWrapper:FC<PokedexWrapperProps> = ({
           <div  className={`${styles.border} ${styles.blue}`} />
         </div>
         {
-          <button className={`${styles.button} ${styles.start}`} onClick={() => setOpen(!open)}>
+          <button className={`${styles.button} ${styles.start}`} onClick={toggleOpen}>
             Start
           </button>
         }
