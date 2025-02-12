@@ -30,7 +30,7 @@ const PokedexWrapper:FC<PokedexWrapperProps> = ({
           <div className={`${styles.border} ${styles.black}`} />
           <div className={`${styles.border} ${styles.clear}`} />
           <div className={`${styles.border} ${styles.thick} ${styles.black}`} />
-          <div  className={`${styles.border} ${styles.blue}`} />
+          <div className={`${styles.border} ${styles.blue}`} />
         </div>
         <div className={styles.center}>
           <div className={styles.line}>
@@ -38,10 +38,7 @@ const PokedexWrapper:FC<PokedexWrapperProps> = ({
               {
                 open && !openDefault &&
                   <button
-                    className={`
-                      ${styles.button}
-                      ${styles.close}
-                    `}
+                    className={`${styles.button} ${styles.close}`}
                     onClick={() => {
                       setOpen(!open)
                       setOpened(true)
@@ -52,11 +49,8 @@ const PokedexWrapper:FC<PokedexWrapperProps> = ({
               {
                 openDefault &&
                   <button
-                    className={`
-                      ${styles.button}
-                      ${styles.back}
-                    `}
-                    onClick={() => router.back()}
+                    className={`${styles.button} ${styles.back}`}
+                    onClick={() => router.push('/')}
                   > Back
                   </button>
               }
@@ -75,7 +69,7 @@ const PokedexWrapper:FC<PokedexWrapperProps> = ({
           <div  className={`${styles.border} ${styles.blue}`} />
         </div>
         {
-          !open && <button className={styles.button} onClick={() => setOpen(!open)}>
+          <button className={`${styles.button} ${styles.start}`} onClick={() => setOpen(!open)}>
             Start
           </button>
         }

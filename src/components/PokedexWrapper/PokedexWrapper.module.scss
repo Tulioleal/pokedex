@@ -13,19 +13,10 @@
   }
 }
 
-@keyframes close {
-  0% {
-    max-height: 100vh;
-  }
-
-  100% {
-    max-height: 55px;
-  }
-}
-
-@keyframes add-box-shadow {
+@keyframes revert-height {
   0% {
     box-shadow: 10px 2px 0px 2px rgba(0,0,0,0.3);
+    max-height: 100vh;
   }
 
   90% {
@@ -34,6 +25,7 @@
 
   100% {
     box-shadow: 10px 0px 0px 2px rgba(0,0,0,0.3);
+    max-height: 54px;
   }
 }
 
@@ -99,15 +91,29 @@
 
 @keyframes revert-border-radius {
   0% {
-    border-radius: 5.1rem;
+    border-radius: 5rem;
   }
 
   50% {
-    border-radius: 5.1rem;
+    border-radius: 5rem;
   }
 
   100% {
     border-radius: 12.5%;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  60% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
 
@@ -150,6 +156,7 @@
   box-shadow: 10px 10px 5px rgba(0,0,0,0.3);
   position: relative;
   transition: 10s aspect-ratio ease-in;
+  min-width: 320px;
 
   .button {
     font-family: 'Press Start 2P';
@@ -441,8 +448,6 @@
 
   .center {
     width: 100%;
-    max-height: 55px;
-    aspect-ratio: 800/88;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -454,6 +459,7 @@
       align-self: center;
       height: 100%;
       width: 98%;
+      max-height: 54px;
       background: linear-gradient(
         90deg,
         var(--light-blue-color-1) var(--light-blue-percentage-1),
@@ -476,6 +482,30 @@
         --light-blue-percentage-4 .25s,
         --light-blue-percentage-5 .25s,
         --light-blue-percentage-6 .25s;
+        
+        @media (max-width: sizes.$tablet) {
+          max-height: 54px;
+        }
+
+        @media (max-width: sizes.$big_mobile) {
+          max-height: 49px;
+        }
+        
+        @media (max-width: sizes.$mobile) {
+          max-height: 44px;
+        }
+
+        @media (max-width: 430px) {
+          max-height: 39px;
+        }
+
+        @media (max-width: 400px) {
+          max-height: 34px;
+        }
+
+        @media (max-width: 370px) {
+          max-height: 29px;
+        }
 
       .content {
         opacity: 0;
@@ -486,8 +516,13 @@
 }
 
 .open {
-  border-radius: 5.1rem;
+  border-radius: 5rem;
   aspect-ratio: auto;
+
+  .start {
+    opacity: 0;
+    pointer-events: none;
+  }
 
   .top,
   .bottom {
@@ -539,6 +574,8 @@
     max-height: none;
 
     .line {
+      height: 100%;
+      max-height: none;
       box-shadow: 10px 0px 0px 0px rgba(0,0,0,0.3); 
         --light-blue-color-1: #43e7e5;
         --light-blue-color-2: #e7e7e7;
@@ -565,6 +602,11 @@
 .closed {
   animation: revert-border-radius .75s ease-in-out;
 
+  .start {
+    animation: fade-in 1.5s ease-in;
+    opacity: 1;
+  }
+
   .bottom {
     .blue {
       animation: open-blue-circle .75s ease-in-out .2s;
@@ -572,10 +614,8 @@
   }
 
   .center {
-    animation: close .75s ease-in-out;
-
     .line {
-      animation: add-box-shadow .75s ease-in-out;
+      animation: revert-height .75s ease-in-out;
     }
   }
 }

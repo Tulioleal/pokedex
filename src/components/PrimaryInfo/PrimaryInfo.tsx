@@ -1,12 +1,10 @@
 import { UNOWN_IMAGE } from "@/lib/const";
-import Image from "next/image";
 import PokemonDescription from "../PokemonDescription/PokemonDescription";
 import styles from "./PrimaryInfo.module.scss"
 import { Pokemon } from "@/interfaces";
-import { capitalizePokemonName, getPokemonTypeClassName } from "@/lib/utils";
+import { capitalizePokemonName } from "@/lib/utils";
 import { pokemonType } from "@/types";
-import { FC } from "react";
-import CryButton from "./CryButton";
+import PrimaryImage from "./PrimaryImage";
 
 const PrimaryInfo = (pokemon:Pokemon) => {
   return (
@@ -32,37 +30,6 @@ const PrimaryInfo = (pokemon:Pokemon) => {
       <PokemonDescription id={pokemon.id}/>
     </section>
   );
-}
-
-interface PrimaryImageProps {
-  name:string;
-  image:string;
-  types:pokemonType[];
-  cry:string
-}
-
-const PrimaryImage:FC<PrimaryImageProps> = ({
-  name,
-  image,
-  types,
-  cry
-}) => {
-  return (
-    <figure
-      className={`
-        ${styles.image}
-        ${styles[getPokemonTypeClassName(types.map((type) => type as pokemonType))]}
-      `}
-    >
-      <Image
-        src={image}
-        width={300}
-        height={300}
-        alt={name}
-      />
-      <CryButton cryUrl={cry}/>
-    </figure>
-  )
 }
 
 export default PrimaryInfo;
