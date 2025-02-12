@@ -2,11 +2,13 @@
   --primary-color: #FF032C; /* Red - Represents the iconic color of the Pokedex */
   --secondary-color: #f3f3f3; /* White - For text and background elements */
   --accent-color: #FFCC01; /* Yellow - For highlights and important buttons */
-  --background-color: #E1E1E1; /* Light Gray - For the main background */
+  --background-color: #7ce9e9; /* Light Gray - For the main background */
   --secondary-background-color: #6aa76e; /* Dark Gray - For secondary text */
   --text-color: #0d0d0d; /* Black - For primary text */
   --highlight-color: #1E90FF; /* Blue - For links and interactive elements */
   --error-color: #FFA500; /* Orange - For error messages and warnings */
+  --background-color-1: #cbcbff; /* Light Blue - For the main background gradient */
+  --background-color-2: #8080f9; /* Dark Blue - For the main background gradient */
 }
 
 * {
@@ -25,6 +27,8 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100dvh;
+  background:
+    linear-gradient(var(--background-color-1), var(--background-color-2)) fixed;
 }
 
 main {
