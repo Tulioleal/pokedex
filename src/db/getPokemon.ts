@@ -1,29 +1,35 @@
 import { Pokemon } from "@/interfaces";
 import { PokemonSpecies } from "pokenode-ts";
 
-async function getPokemon(pokemonName: string) {
-  const pokemonPromise = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+async function getPokemonData(
+  pokemonName: string
+) {
+  const pokemonResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
 
-  if (!pokemonPromise.ok) {
-    const unownPromise = await fetch(`https://pokeapi.co/api/v2/pokemon/unown`)
+  if (!pokemonResponse.ok) {
     const pokemonSpecies = await fetch(`https://pokeapi.co/api/v2/pokemon-species/unown`)
 
-    return {
-      ...await unownPromise.json(),
-      ...await pokemonSpecies.json()
-    } as Pokemon & PokemonSpecies;
+    return await pokemonSpecies.json() as Pokemon
   }
 
-  const pokemon = await pokemonPromise.json() as Pokemon;
-  const pokemonSpecies = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}`)
+  const pokemon = await pokemonResponse.json() as Pokemon;
 
+  return pokemon as Pokemon;
+}
 
-  return {
-    ...pokemon,
-    ...await pokemonSpecies.json()
-  } as Pokemon & PokemonSpecies;
+async function getPokemonSpecies(id: string) {
+  const speciesResponse = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
+
+  if (!speciesResponse.ok) {
+    console.log("Error fetching species data")
+
+    return null
+  }
+
+  return await speciesResponse.json() as PokemonSpecies
 }
 
 export {
-  getPokemon
+  getPokemonData,
+  getPokemonSpecies
 }
