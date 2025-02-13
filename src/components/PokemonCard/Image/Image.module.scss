@@ -1,0 +1,129 @@
+@use 'sass:list';
+@use 'sass:color';
+@use '@/styles/_variables';
+@use '@/styles/_colors';
+@use '@/styles/_common';
+
+.carousel {
+  img {
+    width: auto !important;
+  }
+  .slide {
+    img {
+      width: auto !important;
+    }
+  }
+}
+
+.top {
+  width: 100%;
+  min-height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: colors.$type-normal-background;
+
+  .header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: .5rem 0;
+  }
+
+  @each $type1, $list1 in variables.$types {
+    $backgroundColor1: list.nth($list1, 2);
+  
+    @each $type2, $list2 in variables.$types {
+      $backgroundColor2: list.nth($list2, 2);
+      
+      .image-#{$type1}-#{$type2} {
+          background: linear-gradient(180deg, $backgroundColor2, $backgroundColor1);
+      }
+    }
+  
+    .image-#{$type1} {
+      background-color: $backgroundColor1;
+    }
+  }
+  
+  .image {
+    width: 100%;
+    min-width: 200px;
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: colors.$text;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    transition: all 0.3s ease;
+    filter: brightness(.95);
+
+      &:hover {
+        transform: scale(1.05);
+        filter: brightness(1.05);
+      }
+    }
+  
+  .name {
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+}
+
+.bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: colors.$background;
+  color: colors.$secondary;
+  padding: 1.5rem 1rem 1rem;
+  position: relative;
+  min-height: 120px;
+
+  .name {
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  
+  .types {
+    position: absolute;
+    top: -16px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+  }
+  
+  .moves {
+    width: 100%;
+    height: 100%;
+    font-size: 1.2rem;
+    font-weight: 700;
+    list-style: none;
+    height: 100%;
+    min-height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .5rem;
+    cursor: default;
+    
+    .move {
+      font-size: 14px;
+      color: colors.$secondary;
+      text-decoration: none;
+      text-align: left;
+
+      &:hover {
+        color: #dedede;
+      }
+    }
+  }
+}

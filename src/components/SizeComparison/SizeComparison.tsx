@@ -73,7 +73,13 @@ const SizeComparison:FC<Pokemon> = (pokemon) => {
       `}
       >
         <Image
-          src={pokemon.sprites.other?.showdown.front_default || UNOWN_IMAGE}
+          src={
+            pokemon.sprites.other?.showdown.front_default ||
+            pokemon.sprites.other?.dream_world.front_default ||
+            pokemon.sprites.other?.home.front_default ||
+            pokemon.sprites.front_default ||
+            UNOWN_IMAGE
+          }
           width={0}
           height={0}
           alt={pokemon.name}
@@ -83,6 +89,8 @@ const SizeComparison:FC<Pokemon> = (pokemon) => {
             filter: 'brightness(0.85)',
             height: getImageHeight(pokemon.height),
             maxHeight: getImageMaxHigh(pokemon.height, imageWidth.aspectRatio),
+            objectFit: "contain",
+            objectPosition: "center",
           }}
           onLoad={handleImageLoad}
         />

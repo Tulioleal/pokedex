@@ -71,7 +71,7 @@ const PokedexWrapper:FC<PokedexWrapperProps> = ({
                 openDefault &&
                   <button
                     className={`${styles.button} ${styles.back}`}
-                    onClick={() => router.push('/')}
+                    onClick={() => router.back()}
                   > Back
                   </button>
               }

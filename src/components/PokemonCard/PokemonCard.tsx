@@ -1,39 +1,43 @@
 "use client"
 
-import { getPokemon } from "@/db/getPokemon";
+import { getPokemonData, getPokemonSpecies } from "@/db/getPokemon";
 import { useEffect, useState } from "react";
 import { Spinner } from "../Spinner/Spinner";
-import Link from "next/link";
-import Image from "next/image";
 import styles from "./PokemonCard.module.scss";
 import { capitalizePokemonName } from "@/lib/utils";
 import TypeBadge from "../TypeBadge/TypeBadge";
 import { generalLink, pokemonType } from "@/types";
-import { PokemonSpecies } from "pokenode-ts";
 import { Move as PokemonMove, Pokemon } from "@/interfaces";
 import Move from "./Move/Move";
+import { PokemonSpecies } from "pokenode-ts";
+import PokemonImage from "./Image/PokemonImage";
+import PokemonCarousel from "./Image/PokemonCarousel";
+import { pokemonSize } from "./interface";
 
 export const PokemonCard = (
   { pokemon } :
   { pokemon: generalLink }
 ) => {
-  const [pokemonData, setPokemonData] = useState<Pokemon & PokemonSpecies | null>(null);
+  const [pokemonData, setPokemonData] = useState<Pokemon| null>(null);
+  const [pokemonSpecies, setPokemonSpecies] = useState<PokemonSpecies| null>(null);
   const [loading, setLoading] = useState(true);
-  const [pokemonSize, setPokemonSize] = useState<110 | 150 | 200>(150);
+  const [pokemonSize, setPokemonSize] = useState<pokemonSize>(150);
   const [moves, setMoves] = useState<PokemonMove[]>([]);
 
   useEffect(() => {
     async function fetchPokemon() {
       let index = 0;
-      const res = await getPokemon(pokemon.name);
-      const size = res.height > 15 ?
-        200 : res.height >= 8 ?
+      const pokemonData = await getPokemonData(pokemon.name);
+      const species = await getPokemonSpecies(pokemonData.id.toString());
+
+      const size = pokemonData.height > 15 ?
+        200 : pokemonData.height >= 8 ?
         150 : 110;
 
-      const filteredMoves = res.moves
+      const filteredMoves = pokemonData.moves
         .filter((move) => move.version_group_details[0].move_learn_method.name === "level-up")
 
-      if (res.evolves_from_species) {
+      if (species?.evolves_from_species) {
         index = filteredMoves.length -1;
       }
 
@@ -48,7 +52,8 @@ export const PokemonCard = (
         
       setMoves(randomMoves);
       setPokemonSize(size);
-      setPokemonData(res);
+      setPokemonData(pokemonData);
+      setPokemonSpecies(species);
     }
     fetchPokemon().then(() => setLoading(false));
   }, [pokemon.name]);
@@ -65,22 +70,17 @@ export const PokemonCard = (
       ${styles.pokemonCard}
       ${styles[`type-${pokemonData.types.map((type) => type.type.name).join("--")}`]}
     `}>
-      <Link href={`/${pokemon.name}`} key={pokemon.name}>
-        <section className={styles.top}>
-          <figure className={styles.image}>
-            <Image
-              src={
-                pokemonData?.sprites.other?.["official-artwork"].front_default ||
-                pokemonData?.sprites.front_default ||
-                "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/201.png" // Default image (Unown)
-              }
-              width={pokemonSize}
-              height={pokemonSize}
-              alt={pokemonData.name}
-            />
-          </figure>
-        </section>
-      </Link>
+      {
+        pokemonSpecies && pokemonSpecies.varieties.length > 1 ?
+          <PokemonCarousel
+            pokemonData={pokemonData}
+            pokemonSpecies={pokemonSpecies}
+          /> :
+          <PokemonImage 
+            pokemonData={pokemonData}
+            pokemonSize={pokemonSize}
+          />
+      }
       <section className={styles.bottom}>
         <div className={styles.types}>
           {pokemonData.types.map((type, i) =>
