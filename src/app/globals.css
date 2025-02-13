@@ -18,7 +18,8 @@
 }
 
 html, body {
-  background-color: var(--background-color);
+  background:
+    linear-gradient(var(--background-color-1), var(--background-color-2)) fixed;
   font-family: 'Raleway', sans-serif;
 }
 
@@ -27,8 +28,6 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100dvh;
-  background:
-    linear-gradient(var(--background-color-1), var(--background-color-2)) fixed;
 }
 
 main {
