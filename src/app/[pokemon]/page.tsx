@@ -1,5 +1,5 @@
 import { getPokemonSlugs } from "@/db/getAllPokemon";
-import { getPokemon } from "@/db/getPokemon";
+import { getPokemonData, getPokemonSpecies } from "@/db/getPokemon";
 import { capitalizePokemonName } from "@/lib/utils";
 import styles from "./pokemonPage.module.scss";
 import LineChart from "@/components/StatsChart/StatsChart";
@@ -37,14 +37,20 @@ export default async function PokemonPage({
   params: Promise<{ pokemon: string }>
 }) {
   const pokemonName = (await params).pokemon
-  const pokemon = await getPokemon(pokemonName);
+  const pokemonData = await getPokemonData(pokemonName);
+  const pokemonSpecies = await getPokemonSpecies(pokemonData.id.toString());
+
+  const pokemon = {
+    ...pokemonData,
+    ...pokemonSpecies
+  }
   
   return (
     <PokedexWrapper openDefault>
       <main className={styles.container}>
         <PrimaryInfo {...pokemon} />
         <SizeComparison {...pokemon} />
-        <EvolutionChain url={pokemon.evolution_chain.url} type={pokemon.types[0].type.name as pokemonType}/>
+        <EvolutionChain url={pokemon.evolution_chain?.url} type={pokemon.types[0].type.name as pokemonType}/>
         <TypeEffectiveness types={pokemon.types.map((type) => type.type.name as pokemonType)} />
         <LineChart
           hp={pokemon.stats[0].base_stat}
