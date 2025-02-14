@@ -6,6 +6,7 @@ import { getPokemonVarieties } from "@/db/getPokemonVarieties";
 import { Pokemon } from "@/interfaces";
 import PokemonImage from "./PokemonImage";
 import styles from "./Image.module.scss";
+import { pokemonType } from "@/types";
 
 interface PokemonWithSize extends Pokemon {
   pokemonSize?: pokemonSize;
@@ -13,7 +14,8 @@ interface PokemonWithSize extends Pokemon {
 
 const PokemonCarousel:FC<PokemonCarouseProps> = ({
   pokemonData,
-  pokemonSpecies
+  pokemonSpecies,
+  onChangePokemon
 }) => {
   const [varietiesData, setVarietiesData] = useState<PokemonWithSize[]>([]);
 
@@ -30,8 +32,6 @@ const PokemonCarousel:FC<PokemonCarouseProps> = ({
         }
       });
 
-      console.log(varieties)
-
       setVarietiesData(varieties);
     }
 
@@ -41,12 +41,15 @@ const PokemonCarousel:FC<PokemonCarouseProps> = ({
 
   return (
     <Carousel className={styles.carousel}
-      showArrows={true}
       showStatus={false}
       showIndicators={false}
       showThumbs={false}
-      infiniteLoop
+      showArrows
       swipeable
+      onChange={(e) => onChangePokemon({
+        name: varietiesData[e].name,
+        types: varietiesData[e].types.map((type) => type.type.name as pokemonType)
+      })}
     >
       {
         varietiesData.map((pokemon) => (

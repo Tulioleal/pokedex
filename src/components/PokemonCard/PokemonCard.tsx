@@ -12,13 +12,14 @@ import Move from "./Move/Move";
 import { PokemonSpecies } from "pokenode-ts";
 import PokemonImage from "./Image/PokemonImage";
 import PokemonCarousel from "./Image/PokemonCarousel";
-import { pokemonSize } from "./interface";
+import { PokemonCardData, pokemonSize } from "./interface";
 
 export const PokemonCard = (
   { pokemon } :
   { pokemon: generalLink }
 ) => {
   const [pokemonData, setPokemonData] = useState<Pokemon| null>(null);
+  const [pokemonCardData, setPokemonCardData] = useState<PokemonCardData | null>(null);
   const [pokemonSpecies, setPokemonSpecies] = useState<PokemonSpecies| null>(null);
   const [loading, setLoading] = useState(true);
   const [pokemonSize, setPokemonSize] = useState<pokemonSize>(150);
@@ -49,6 +50,11 @@ export const PokemonCard = (
         [
           filteredMoves[0]
         ];
+
+      setPokemonCardData({
+        name: pokemonData.name,
+        types: pokemonData.types.map((type) => type.type.name as pokemonType)
+      });
         
       setMoves(randomMoves);
       setPokemonSize(size);
@@ -57,6 +63,8 @@ export const PokemonCard = (
     }
     fetchPokemon().then(() => setLoading(false));
   }, [pokemon.name]);
+
+  const changePokemonCardData = (data: PokemonCardData) => setPokemonCardData(data);
 
   if (loading || !pokemonData)
     return (
@@ -75,6 +83,7 @@ export const PokemonCard = (
           <PokemonCarousel
             pokemonData={pokemonData}
             pokemonSpecies={pokemonSpecies}
+            onChangePokemon={changePokemonCardData}
           /> :
           <PokemonImage 
             pokemonData={pokemonData}
@@ -83,13 +92,22 @@ export const PokemonCard = (
       }
       <section className={styles.bottom}>
         <div className={styles.types}>
-          {pokemonData.types.map((type, i) =>
-            <TypeBadge name={type.type.name as pokemonType} key={i}/>
-          )}
+          {
+            (pokemonSpecies && pokemonSpecies.varieties.length > 1 ?
+              pokemonCardData?.types.map((type, i) =>
+                <TypeBadge name={type} key={i}/>
+              ) :
+              pokemonData.types.map((type, i) =>
+                <TypeBadge name={type.type.name as pokemonType} key={i}/>
+              )
+            )
+          }
         </div>
-          <h3 className={styles.name}>
-            {capitalizePokemonName(pokemonData.name)}
-          </h3>
+        <h3 className={styles.name}>
+          {
+            capitalizePokemonName(pokemonCardData?.name ?? pokemonData.name)
+          }
+        </h3>
         <ul className={styles.moves}>
           {
             moves.map((move, i) => (
