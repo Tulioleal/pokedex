@@ -93,13 +93,8 @@ export const PokemonCard = (
       <section className={styles.bottom}>
         <div className={styles.types}>
           {
-            (pokemonSpecies && pokemonSpecies.varieties.length > 1 ?
-              pokemonCardData?.types.map((type, i) =>
-                <TypeBadge name={type} key={i}/>
-              ) :
-              pokemonData.types.map((type, i) =>
-                <TypeBadge name={type.type.name as pokemonType} key={i}/>
-              )
+            pokemonCardData?.types.map((type, i) =>
+              <TypeBadge name={type} key={i}/>
             )
           }
         </div>
