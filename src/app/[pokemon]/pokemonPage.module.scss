@@ -1,0 +1,21 @@
+@use '@/styles/sizes';
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10%;
+  row-gap: 4rem;
+  margin-top: 2rem;
+
+  @media (max-width: sizes.$tablet) {
+    row-gap: 3rem;
+    margin-top: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  h1 {
+    width: 100%;
+  }
+}

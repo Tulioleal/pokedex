@@ -1,12 +1,14 @@
 :root {
-  --primary-color: #FF032C; /* Red - Represents the iconic color of the Pokedex */
+  --primary-color: #ff032c; /* Red - Represents the iconic color of the Pokedex */
   --secondary-color: #f3f3f3; /* White - For text and background elements */
-  --accent-color: #FFCC01; /* Yellow - For highlights and important buttons */
-  --background-color: #E1E1E1; /* Light Gray - For the main background */
-  --secondary-background-color: #c9c9c9; /* Dark Gray - For secondary text */
+  --accent-color: #ffcc01; /* Yellow - For highlights and important buttons */
+  --background-color: #7ce9e9; /* Light Gray - For the main background */
+  --secondary-background-color: #6aa76e; /* Dark Gray - For secondary text */
   --text-color: #0d0d0d; /* Black - For primary text */
-  --highlight-color: #1E90FF; /* Blue - For links and interactive elements */
-  --error-color: #FFA500; /* Orange - For error messages and warnings */
+  --highlight-color: #1e90ff; /* Blue - For links and interactive elements */
+  --error-color: #ffa500; /* Orange - For error messages and warnings */
+  --background-color-1: #cbcbff; /* Light Blue - For the main background gradient */
+  --background-color-2: #8080f9; /* Dark Blue - For the main background gradient */
 }
 
 * {
@@ -15,17 +17,42 @@
   box-sizing: border-box;
 }
 
-html, body {
-  background-color: var(--background-color);
+html,
+body {
+  background: linear-gradient(var(--background-color-1), var(--background-color-2)) fixed;
   font-family: 'Raleway', sans-serif;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+}
+
 main {
-  max-width: 100vh;
+  max-width: 2080px;
   width: 100%;
-  padding: 2rem 1rem;
+  padding: 2rem 3%;
   text-align: center;
   margin: 0 auto;
+}
+
+section {
+  max-width: 500px;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  section {
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    max-width: none;
+  }
 }
 
 h1,
@@ -34,7 +61,19 @@ h3 {
   font-family: 'Press Start 2P', sans-serif;
 }
 
+h2 {
+  margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
+}
+
 a {
   text-decoration: none;
-  color: var(--highlight-color);
+  color: inherit;
 }

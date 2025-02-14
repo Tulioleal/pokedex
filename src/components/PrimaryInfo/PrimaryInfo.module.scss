@@ -1,0 +1,100 @@
+@use 'sass:list';
+@use '@/styles/_variables';
+@use '@/styles/_colors';
+@use '@/styles/_common';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.image {
+  border-radius: 100%;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+
+  .cry-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.246);
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+
+    button {
+      border-radius: 200%;
+      border: none;
+      @include common.button(100px, 100px);
+    }
+  }
+
+  &:hover {
+    .cry-button {
+      opacity: 1;
+    }
+  }
+}
+
+.types {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+@each $type1, $list1 in variables.$types {
+  .#{$type1} {
+    background: radial-gradient(
+      64.22% 64.22% at 50% 50%,
+      list.nth($list1, 1) 50%,
+      list.nth($list1, 3) 100%
+    );
+    transition: all 0.2s ease-in-out;
+    box-shadow: 5px 0px 0px list.nth($list1, 3);
+
+    &:hover {
+      box-shadow: none;
+      transform: scale(1.02);
+    }
+  }
+
+  .#{$type1}-pill {
+    font-size: 14px;
+    color: colors.$secondary !important;
+    padding: 0.25rem;
+    border-radius: 16px;
+    font-weight: 600;
+    background-color: list.nth($list1, 1);
+    cursor: default;
+
+    min-width: 80px;
+  }
+
+  @each $type2, $list2 in variables.$types {
+    .#{$type1}-#{$type2} {
+      background: radial-gradient(
+        64.22% 64.22% at 50% 50%,
+        list.nth($list2, 2) 10%,
+        list.nth($list1, 1) 100%
+      );
+      transition: all 0.2s ease-in-out;
+      box-shadow: 4px 4px 1px 0px list.nth($list1, 3);
+
+      &:hover {
+        box-shadow: none;
+        transform: translate(4px, 4px);
+      }
+    }
+  }
+}

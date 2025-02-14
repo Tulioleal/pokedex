@@ -1,10 +1,13 @@
-import Link from "next/link";
+import { PokemonList } from '@/components/PokemonList/PokemonList';
+import { getAllPokemon } from '@/db/getAllPokemon';
+import PokedexWrapper from '@/components/PokedexWrapper/PokedexWrapper';
 
+export default async function Pokedex() {
+  const pokemonListResponse = await getAllPokemon();
 
-export default async function Home() {
   return (
-    <main>
-      <Link href="/pokedex">Pokedex</Link>
-    </main>
+    <PokedexWrapper>
+      <PokemonList pokemonList={pokemonListResponse.results} />
+    </PokedexWrapper>
   );
 }

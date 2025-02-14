@@ -1,0 +1,77 @@
+@use 'sass:list';
+@use 'sass:color';
+@use '@/styles/_colors';
+@use '@/styles/_variables';
+@use '@/styles/_common';
+
+.container {
+  width: 100%;
+  max-width: 500px;
+}
+
+.evolutionChain {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 20px auto;
+  padding: 1rem;
+}
+
+.evolutions {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.level1,
+.level2,
+.level3 {
+  display: flex;
+  justify-content: space-evenly;
+
+  .pokemon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      transition: transform 0.2s ease-in-out;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+.level1 {
+  flex-direction: column;
+  align-items: center;
+}
+
+.chain {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.arrow {
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  width: min-content;
+  color: colors.$highlight;
+  transform: rotate(90deg);
+  cursor: default;
+}
+
+.pokemon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@each $type1, $list1 in variables.$types {
+  .#{$type1} {
+    @include common.card(list.nth($list1, 2), list.nth($list1, 1), list.nth($list1, 3));
+  }
+}

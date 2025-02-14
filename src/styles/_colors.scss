@@ -1,98 +1,95 @@
-  $primary: #FF032C;
-  $secondary: #f3f3f3;
-  $accent: #FFCC01;
-  $background: #E1E1E1;
-  $secondary-background: #c9c9c9;
-  $text: #0d0d0d;
-  $highlight: #1E90FF;
-  $error: #FFA500;
+@use 'sass:color';
 
-  /* Normal Type */
-  $type-normal: #A8A77A;
-  $type-normal-background: #bbbbbb;
-  $type-normal-border: #6D6D4E;
-  
-  /* Fire Type */
-  $type-fire: #EE8130;
-  $type-fire-background: #FF9C54;
-  $type-fire-border: #9C531F;
+$crimson: #c00c22;
+$almost-black: #070707;
+$light-blue: #88fffe;
+$grey: #747474;
+$almost-white: #eaeaea;
 
-  /* Water Type */
-  $type-water: #6390F0;
-  $type-water-background: #8eabeb;
-  $type-water-border: #445E9C;
+$primary: #ff0101;
+$secondary: #f3f3f3;
+$accent: #ffcc01;
+$background: #e1e1e1;
+$secondary-background: #c9c9c9;
+$text: #0d0d0d;
+$highlight: #1e90ff;
+$error: #ffa500;
 
-  /* Electric Type */
-  $type-electric: #F7D02C;
-  $type-electric-background: #f0d37b;
-  $type-electric-border: #A1871F;
+/* Normal Type */
+$type-normal: #a8a77a;
+$type-normal-background: #bbbbbb;
+$type-normal-border: #6d6d4e;
 
-  /* Grass Type */
-  $type-grass: #7AC74C;
-  $type-grass-background: #8BBE8A;
-  $type-grass-border: #4E8234;
-  
-  /* Ice Type */
-  $type-ice: #96D9D6;
-  $type-ice-background: #89C4C0;
-  $type-ice-border: #638D8D;
+$modifier: 20%;
 
-  /* Fighting Type */
-  $type-fighting: #C22E28;
-  $type-fighting-background: #b46864;
-  $type-fighting-border: #7D1F1A;
+$type-bug: #94bc4a;
+$type-bug-background: color.adjust($type-bug, $lightness: $modifier);
+$type-bug-border: color.adjust($type-bug, $lightness: -$modifier);
 
-  /* Poison Type */
-  $type-poison: #A33EA1;
-  $type-poison-background: #b888ce;
-  $type-poison-border: #682A68;
+$type-dark: #736c75;
+$type-dark-background: color.adjust($type-dark, $lightness: $modifier);
+$type-dark-border: color.adjust($type-dark, $lightness: -$modifier);
 
-  /* Ground Type */
-  $type-ground: #D97746;
-  $type-ground-background: #d39475;
-  $type-ground-border: #927D44;
+$type-dragon: #6a7baf;
+$type-dragon-border: color.adjust($type-dragon, $lightness: -$modifier);
+$type-dragon-background: color.adjust($type-dragon, $lightness: $modifier);
 
-  /* Flying Type */
-  $type-flying: #A98FF3;
-  $type-flying-background: #8FA8DD;
-  $type-flying-border: #6D5E9C;
+$type-electric: #e5c531;
+$type-electric-background: color.adjust($type-electric, $lightness: $modifier);
+$type-electric-border: color.adjust($type-electric, $lightness: -$modifier);
 
-  /* Psychic Type */
-  $type-psychic: #F95587;
-  $type-psychic-background: #f8a0ba;
-  $type-psychic-border: #A13959;
+$type-fairy: #e397d1;
+$type-fairy-background: color.adjust($type-fairy, $lightness: $modifier);
+$type-fairy-border: color.adjust($type-fairy, $lightness: -$modifier);
 
-  /* Bug Type */
-  $type-bug: #A6B91A;
-  $type-bug-background: #a3a784;
-  $type-bug-border: #6D7815;
+$type-fighting: #cb5f48;
+$type-fighting-background: color.adjust($type-fighting, $lightness: $modifier);
+$type-fighting-border: color.adjust($type-fighting, $lightness: -$modifier);
 
-  /* Rock Type */
-  $type-rock: #B6A136;
-  $type-rock-background: #CDBE7A;
-  $type-rock-border: #786824;
+$type-fire: #ea7a3c;
+$type-fire-background: color.adjust($type-fire, $lightness: $modifier);
+$type-fire-border: color.adjust($type-fire, $lightness: -$modifier);
 
-  /* Ghost Type */
-  $type-ghost: #735797;
-  $type-ghost-background: #846AB6;
-  $type-ghost-border: #493963;
+$type-flying: #7da6de;
+$type-flying-background: color.adjust($type-flying, $lightness: $modifier);
+$type-flying-border: color.adjust($type-flying, $lightness: -$modifier);
 
-  /* Dragon Type */
-  $type-dragon: #6450f8;
-  $type-dragon-background: #8A7BFA;
-  $type-dragon-border: #4924A1;
+$type-ghost: #846ab6;
+$type-ghost-background: color.adjust($type-ghost, $lightness: $modifier);
+$type-ghost-border: color.adjust($type-ghost, $lightness: -$modifier);
 
-  /* Dark Type */
-  $type-dark: #705746;
-  $type-dark-background: #746A5A;
-  $type-dark-border: #49392F;
+$type-grass: #71c558;
+$type-grass-background: color.adjust($type-grass, $lightness: $modifier);
+$type-grass-border: color.adjust($type-grass, $lightness: -$modifier);
 
-  /* Steel Type */
-  $type-steel: #B7B7CE;
-  $type-steel-background: #B8B8D0;
-  $type-steel-border: #787887;
+$type-ground: #cc9f4f;
+$type-ground-background: color.adjust($type-ground, $lightness: $modifier);
+$type-ground-border: color.adjust($type-ground, $lightness: -$modifier);
 
-  /* Fairy Type */
-  $type-fairy: #D685AD;
-  $type-fairy-background: #EE99AC;
-  $type-fairy-border: #9B6470;
+$type-ice: #70cbd4;
+$type-ice-background: color.adjust($type-ice, $lightness: $modifier);
+$type-ice-border: color.adjust($type-ice, $lightness: -$modifier);
+
+$type-normal: #aab09f;
+$type-normal-background: color.adjust($type-normal, $lightness: $modifier);
+$type-normal-border: color.adjust($type-normal, $lightness: -$modifier);
+
+$type-poison: #b468b7;
+$type-poison-background: color.adjust($type-poison, $lightness: $modifier);
+$type-poison-border: color.adjust($type-poison, $lightness: -$modifier);
+
+$type-psychic: #e5709b;
+$type-psychic-background: color.adjust($type-psychic, $lightness: $modifier);
+$type-psychic-border: color.adjust($type-psychic, $lightness: -$modifier);
+
+$type-rock: #b2a061;
+$type-rock-background: color.adjust($type-rock, $lightness: $modifier);
+$type-rock-border: color.adjust($type-rock, $lightness: -$modifier);
+
+$type-steel: #89a1b0;
+$type-steel-background: color.adjust($type-steel, $lightness: $modifier);
+$type-steel-border: color.adjust($type-steel, $lightness: -$modifier);
+
+$type-water: #539ae2;
+$type-water-background: color.adjust($type-water, $lightness: $modifier);
+$type-water-border: color.adjust($type-water, $lightness: -$modifier);
