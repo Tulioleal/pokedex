@@ -1,8 +1,8 @@
-import { PokemonType } from '@/types';
+import { pokemonType } from '@/types';
 
 export const UNOWN_IMAGE =
   'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/201.png';
-export const POKEMON_TYPES: PokemonType[] = [
+export const POKEMON_TYPES: pokemonType[] = [
   'normal',
   'fire',
   'water',
