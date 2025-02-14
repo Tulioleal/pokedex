@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export default function useViewSize() {
   const [viewSize, setViewSize] = useState({
     width: 0,
-    height: 0
+    height: 0,
   });
 
   useEffect(() => {
     const handleResize = () => {
       setViewSize({
         width: window.innerWidth,
-        height: window.innerHeight
+        height: window.innerHeight,
       });
     };
 
@@ -19,6 +19,5 @@ export default function useViewSize() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  
   return viewSize;
 }

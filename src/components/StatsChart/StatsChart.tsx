@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import { FC } from 'react';
 import 'chart.js/auto';
@@ -22,7 +22,7 @@ interface StatsChartProps extends Stats {
   label: string;
 }
 
-const LineChart:FC<StatsChartProps> = ({
+const LineChart: FC<StatsChartProps> = ({
   hp,
   attack,
   defense,
@@ -30,34 +30,20 @@ const LineChart:FC<StatsChartProps> = ({
   specialDefense,
   speed,
   label,
-  type
+  type,
 }) => {
-  const data:ChartData<'radar'> = {
-    labels: [
-      "HP",
-      "   Attack   ",
-      "  Defense   ",
-      "Speed",
-      " Sp. Attack ",
-      "Sp. Defense",
-    ],
+  const data: ChartData<'radar'> = {
+    labels: ['HP', '   Attack   ', '  Defense   ', 'Speed', ' Sp. Attack ', 'Sp. Defense'],
     datasets: [
       {
-        data: [
-          hp,
-          attack,
-          defense,
-          speed,
-          specialAttack,
-          specialDefense,
-        ],
+        data: [hp, attack, defense, speed, specialAttack, specialDefense],
         animation: {
           duration: 1250,
-          easing: 'easeInOutCubic'
+          easing: 'easeInOutCubic',
         },
         borderWidth: 3,
         fill: true,
-        backgroundColor:  TYPE_COLORS[type] + "66",
+        backgroundColor: TYPE_COLORS[type] + '66',
         borderColor: TYPE_COLORS[type],
         radius: 2,
         tension: 0,
@@ -65,13 +51,13 @@ const LineChart:FC<StatsChartProps> = ({
     ],
   };
 
-  const options:ChartOptions<'radar'> = {
+  const options: ChartOptions<'radar'> = {
     responsive: true,
     maintainAspectRatio: true,
     plugins: {
       title: {
         display: false,
-        text: label
+        text: label,
       },
       legend: {
         display: false,
@@ -86,15 +72,15 @@ const LineChart:FC<StatsChartProps> = ({
         suggestedMax: 150,
         ticks: {
           display: false,
-        }
+        },
       },
-    }
+    },
   };
 
   return (
     <section className={styles.container}>
       <h2>Base stats</h2>
-      <Radar data={data} options={options}/>
+      <Radar data={data} options={options} />
     </section>
   );
 };

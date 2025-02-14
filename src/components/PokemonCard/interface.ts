@@ -1,6 +1,6 @@
-import { Pokemon } from "@/interfaces";
-import { pokemonType } from "@/types";
-import { PokemonSpecies } from "pokenode-ts";
+import { Pokemon } from '@/interfaces';
+import { pokemonType } from '@/types';
+import { PokemonSpecies } from 'pokenode-ts';
 
 export interface PokemonImageProps {
   pokemonData: Pokemon;
@@ -14,8 +14,8 @@ export interface PokemonCarouseProps {
 }
 
 export interface PokemonCardData {
-  name: string,
-  types: pokemonType[]
+  name: string;
+  types: pokemonType[];
 }
 
 export type pokemonSize = 110 | 150 | 200;

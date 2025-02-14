@@ -1,4 +1,4 @@
-import { ability, chain, cry, gameIndex, generalLink, statInfo, type } from "./types";
+import { ability, chain, cry, gameIndex, generalLink, statInfo, type } from './types';
 
 interface HeldItem {
   item: generalLink;
@@ -37,7 +37,7 @@ export interface Sprite {
       front_shiny: string | null;
       front_shiny_female: string | null;
     };
-    "official-artwork": {
+    'official-artwork': {
       front_default: string;
       front_shiny: string;
     };
@@ -53,8 +53,8 @@ export interface Sprite {
     };
   };
   versions: {
-    "generation-i": {
-      "red-blue": {
+    'generation-i': {
+      'red-blue': {
         back_default: string;
         back_gray: string;
         back_transparent: string;
@@ -71,7 +71,7 @@ export interface Sprite {
         front_transparent: string;
       };
     };
-    "generation-ii": {
+    'generation-ii': {
       crystal: {
         back_default: string;
         back_shiny: string;
@@ -97,26 +97,26 @@ export interface Sprite {
         front_transparent: string;
       };
     };
-    "generation-iii": {
+    'generation-iii': {
       emerald: {
         front_default: string;
         front_shiny: string;
       };
-      "firered-leafgreen": {
+      'firered-leafgreen': {
         back_default: string;
         back_shiny: string;
         front_default: string;
         front_shiny: string;
       };
-      "ruby-sapphire": {
+      'ruby-sapphire': {
         back_default: string;
         back_shiny: string;
         front_default: string;
         front_shiny: string;
       };
     };
-    "generation-iv": {
-      "diamond-pearl": {
+    'generation-iv': {
+      'diamond-pearl': {
         back_default: string;
         back_female: string | null;
         back_shiny: string;
@@ -126,7 +126,7 @@ export interface Sprite {
         front_shiny: string;
         front_shiny_female: string | null;
       };
-      "heartgold-soulsilver": {
+      'heartgold-soulsilver': {
         back_default: string;
         back_female: string | null;
         back_shiny: string;
@@ -147,8 +147,8 @@ export interface Sprite {
         front_shiny_female: string | null;
       };
     };
-    "generation-v": {
-      "black-white": {
+    'generation-v': {
+      'black-white': {
         animated: {
           back_default: string;
           back_female: string | null;
@@ -169,33 +169,33 @@ export interface Sprite {
         front_shiny_female: string | null;
       };
     };
-    "generation-vi": {
-      "omegaruby-alphasapphire": {
+    'generation-vi': {
+      'omegaruby-alphasapphire': {
         front_default: string;
         front_female: string | null;
         front_shiny: string;
         front_shiny_female: string | null;
       };
-      "x-y": {
+      'x-y': {
         front_default: string;
         front_female: string | null;
         front_shiny: string;
         front_shiny_female: string | null;
       };
     };
-    "generation-vii": {
+    'generation-vii': {
       icons: {
         front_default: string;
         front_female: string | null;
       };
-      "ultra-sun-ultra-moon": {
+      'ultra-sun-ultra-moon': {
         front_default: string;
         front_female: string | null;
         front_shiny: string;
         front_shiny_female: string | null;
       };
     };
-    "generation-viii": {
+    'generation-viii': {
       icons: {
         front_default: string;
         front_female: string | null;
@@ -258,10 +258,10 @@ interface Species {
 }
 
 interface PokemonListResponse {
-  "count": number,
-  "next": null,
-  "previous": null,
-  "results": generalLink[]
+  count: number;
+  next: null;
+  previous: null;
+  results: generalLink[];
 }
 
 interface EvolutionChain {
@@ -269,9 +269,4 @@ interface EvolutionChain {
   id: number;
 }
 
-export type {
-  Pokemon,
-  Species,
-  PokemonListResponse,
-  EvolutionChain
-}
+export type { Pokemon, Species, PokemonListResponse, EvolutionChain };

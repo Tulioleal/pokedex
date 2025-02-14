@@ -21,10 +21,7 @@
   align-items: center;
   line-height: 1;
 
-  @include common.button(
-    30px,
-    30px,
-  );
+  @include common.button(30px, 30px);
 
   &:hover {
     background-color: colors.$almost_black;

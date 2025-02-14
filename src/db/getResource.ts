@@ -10,6 +10,4 @@ async function getResource(url: string) {
   return data;
 }
 
-export {
-  getResource
-}
+export { getResource };

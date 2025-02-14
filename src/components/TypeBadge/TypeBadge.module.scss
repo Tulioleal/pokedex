@@ -1,5 +1,5 @@
 @use 'sass:list';
-@use "@/styles/_variables";
+@use '@/styles/_variables';
 
 .type_badge {
   display: inline-block;
@@ -19,7 +19,7 @@
 @each $type, $list in variables.$types {
   .#{$type} {
     background-color: list.nth($list, 1);
-    
+
     &:hover {
       background-color: list.nth($list, 3);
     }

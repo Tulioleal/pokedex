@@ -28,25 +28,25 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: .5rem 0;
+    padding: 0.5rem 0;
   }
 
   @each $type1, $list1 in variables.$types {
     $backgroundColor1: list.nth($list1, 2);
-  
+
     @each $type2, $list2 in variables.$types {
       $backgroundColor2: list.nth($list2, 2);
-      
+
       .image-#{$type1}-#{$type2} {
-          background: linear-gradient(180deg, $backgroundColor2, $backgroundColor1);
+        background: linear-gradient(180deg, $backgroundColor2, $backgroundColor1);
       }
     }
-  
+
     .image-#{$type1} {
       background-color: $backgroundColor1;
     }
   }
-  
+
   .image {
     width: 100%;
     min-width: 200px;
@@ -58,14 +58,14 @@
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     transition: all 0.3s ease;
-    filter: brightness(.95);
+    filter: brightness(0.95);
 
-      &:hover {
-        transform: scale(1.05);
-        filter: brightness(1.05);
-      }
+    &:hover {
+      transform: scale(1.05);
+      filter: brightness(1.05);
     }
-  
+  }
+
   .name {
     font-size: 1rem;
     font-weight: 700;
@@ -90,7 +90,7 @@
     font-weight: 700;
     text-decoration: none;
   }
-  
+
   .types {
     position: absolute;
     top: -16px;
@@ -98,9 +98,9 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: .5rem;
+    gap: 0.5rem;
   }
-  
+
   .moves {
     width: 100%;
     height: 100%;
@@ -112,9 +112,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: .5rem;
+    gap: 0.5rem;
     cursor: default;
-    
+
     .move {
       font-size: 14px;
       color: colors.$secondary;

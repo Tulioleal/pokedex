@@ -72,10 +72,6 @@
 
 @each $type1, $list1 in variables.$types {
   .#{$type1} {
-    @include common.card(
-      list.nth($list1, 2),
-      list.nth($list1, 1),
-      list.nth($list1, 3)
-    );
+    @include common.card(list.nth($list1, 2), list.nth($list1, 1), list.nth($list1, 3));
   }
 }

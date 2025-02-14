@@ -1,40 +1,36 @@
-import { EvolutionChain as EvolutionChainInterface } from "pokenode-ts";
-import { FC } from "react";
+import { EvolutionChain as EvolutionChainInterface } from 'pokenode-ts';
+import { FC } from 'react';
 import styles from './EvolutionChain.module.scss';
-import { getPokemonData } from "@/db/getPokemon";
-import Image from "next/image";
-import Link from "next/link";
-import { capitalizePokemonName } from "@/lib/utils";
-import Tooltip from "../Tooltip/Tooltip";
-import { pokemonType } from "@/types";
+import { getPokemonData } from '@/db/getPokemon';
+import Image from 'next/image';
+import Link from 'next/link';
+import { capitalizePokemonName } from '@/lib/utils';
+import Tooltip from '../Tooltip/Tooltip';
+import { pokemonType } from '@/types';
 
 type EvolutionChainProps = {
   url?: string;
-  type: pokemonType
-}
+  type: pokemonType;
+};
 
-const EvolutionChain:FC<EvolutionChainProps> = async ({
-  url, type
-}) => {
+const EvolutionChain: FC<EvolutionChainProps> = async ({ url, type }) => {
   if (!url) return null;
-  
+
   const evolutionChain = await getEvolutionChain(url);
 
   const pokemonEvolutionChain = {
     firstPokemon: evolutionChain.chain.species,
-    level2: evolutionChain.chain.evolves_to.map(
-      (evolution) => ({
+    level2: evolutionChain.chain.evolves_to
+      .map((evolution) => ({
         species: evolution.species,
         method: evolution.evolution_details,
-        level3: evolution.evolves_to.map(
-          (evolution) => ({
-            species: evolution.species,
-            method: evolution.evolution_details,
-          })
-        )
-      })
-    ).flat(3),
-  }
+        level3: evolution.evolves_to.map((evolution) => ({
+          species: evolution.species,
+          method: evolution.evolution_details,
+        })),
+      }))
+      .flat(3),
+  };
 
   return (
     <article className={styles.container}>
@@ -70,21 +66,21 @@ const EvolutionChain:FC<EvolutionChainProps> = async ({
                 ))}
               </div>
             </div>
-          ))}  
+          ))}
         </div>
       </div>
     </article>
   );
-}
+};
 
 export default EvolutionChain;
 
 async function getEvolutionChain(url: string) {
   const evolutionChainPromise = await fetch(url);
-  return await evolutionChainPromise.json() as EvolutionChainInterface;
+  return (await evolutionChainPromise.json()) as EvolutionChainInterface;
 }
 
-const PokemonSprite = async ({ name, showArrow }: { name: string, showArrow?: boolean }) => {
+const PokemonSprite = async ({ name, showArrow }: { name: string; showArrow?: boolean }) => {
   const pokemon = await getPokemonData(name);
 
   return (
@@ -95,18 +91,14 @@ const PokemonSprite = async ({ name, showArrow }: { name: string, showArrow?: bo
             alt={pokemon.name}
             src={
               pokemon.sprites?.front_default ||
-              "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/201.png" // Default image (Unown)
+              'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/201.png' // Default image (Unown)
             }
             width={100}
             height={100}
-            />
+          />
         </Link>
       </Tooltip>
-      {
-        showArrow && <span className={styles.arrow}>
-          {">"}
-        </span>
-      }
+      {showArrow && <span className={styles.arrow}>{'>'}</span>}
     </div>
-  )
-}
+  );
+};

@@ -15,16 +15,16 @@
 
 @keyframes revert-height {
   0% {
-    box-shadow: 10px 2px 0px 2px rgba(0,0,0,0.3);
+    box-shadow: 10px 2px 0px 2px rgba(0, 0, 0, 0.3);
     max-height: 100vh;
   }
 
   90% {
-    box-shadow: 10px 2px 0px 2px rgba(0,0,0,0.3);
+    box-shadow: 10px 2px 0px 2px rgba(0, 0, 0, 0.3);
   }
 
   100% {
-    box-shadow: 10px 0px 0px 2px rgba(0,0,0,0.3);
+    box-shadow: 10px 0px 0px 2px rgba(0, 0, 0, 0.3);
     max-height: 54px;
   }
 }
@@ -117,18 +117,14 @@
   }
 }
 
-@mixin circle(
-  $background,
-  $size,
-  $position
-) {
+@mixin circle($background, $size, $position) {
   content: '';
   position: absolute;
   aspect-ratio: 1;
   border-radius: 100%;
   background: $background;
   width: $size;
-  left: calc( 50% - calc($size / 2) );
+  left: calc(50% - calc($size / 2));
 
   @if $position == top {
     clip-path: polygon(0% 50%, 100% 50%, 100% 0%, 0% 0%);
@@ -153,7 +149,7 @@
   height: 100%;
   overflow: hidden;
   border-radius: 12.5%;
-  box-shadow: 10px 10px 5px rgba(0,0,0,0.3);
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
   position: relative;
   transition: 10s aspect-ratio ease-in;
   min-width: 320px;
@@ -170,14 +166,14 @@
     outline: none;
     border: none;
     cursor: pointer;
-    font-size: .9rem;
+    font-size: 0.9rem;
 
     &:hover {
       color: colors.$crimson;
     }
 
     @media (max-width: sizes.$mobile) {
-      font-size: .75rem;
+      font-size: 0.75rem;
     }
   }
 
@@ -200,38 +196,30 @@
     aspect-ratio: 800/325;
     background: linear-gradient(
       90deg,
-      rgba(246,50,90,1) 0%,
-      rgba(194,14,35,1) 10%,
-      rgba(142,9,25,1) 90%,
-      rgba(73,4,14,1) 100%
+      rgba(246, 50, 90, 1) 0%,
+      rgba(194, 14, 35, 1) 10%,
+      rgba(142, 9, 25, 1) 90%,
+      rgba(73, 4, 14, 1) 100%
     );
     position: relative;
 
     &:before,
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       width: 22%;
-      height: calc(3% + .5vw);
+      height: calc(3% + 0.5vw);
       z-index: 3;
     }
 
     &:before {
       left: 0;
-      background: linear-gradient(
-        90deg,
-        rgb(234,234,234,1) 30%,
-        rgba(183,183,183,1) 100%
-      );
+      background: linear-gradient(90deg, rgb(234, 234, 234, 1) 30%, rgba(183, 183, 183, 1) 100%);
     }
 
     &:after {
       right: 0;
-      background: linear-gradient(
-        90deg,
-        rgba(145,143,143,1) 30%,
-        rgba(86,86,86,1) 100%
-      );
+      background: linear-gradient(90deg, rgba(145, 143, 143, 1) 30%, rgba(86, 86, 86, 1) 100%);
     }
 
     & .corner {
@@ -241,16 +229,16 @@
       background: radial-gradient(
         circle,
         transparent 22%,
-        rgba(7,7,7,0.9) 23%,
-        rgba(7,7,7,0.3) 24%,
-        rgba(7,7,7,0.3) 28%,
-        rgba(7,7,7,0.9) 29%,
+        rgba(7, 7, 7, 0.9) 23%,
+        rgba(7, 7, 7, 0.3) 24%,
+        rgba(7, 7, 7, 0.3) 28%,
+        rgba(7, 7, 7, 0.9) 29%,
         transparent 30%,
         transparent 61%,
-        rgba(7,7,7,0.9) 62%,
-        rgba(7,7,7,0.3) 63%,
-        rgba(7,7,7,0.3) 67%,
-        rgba(7,7,7,0.9) 68%,
+        rgba(7, 7, 7, 0.9) 62%,
+        rgba(7, 7, 7, 0.3) 63%,
+        rgba(7, 7, 7, 0.3) 67%,
+        rgba(7, 7, 7, 0.9) 68%,
         transparent 69%
       );
       border-radius: 100%;
@@ -273,7 +261,7 @@
     &:before,
     &:after {
       bottom: 0;
-      border-top: .5vw solid #520c13da;
+      border-top: 0.5vw solid #520c13da;
     }
 
     &:before {
@@ -289,7 +277,7 @@
     }
 
     & .black {
-      @include circle(rgba(7,7,7,0.5), 60%, top);
+      @include circle(rgba(7, 7, 7, 0.5), 60%, top);
       bottom: -87.5%;
     }
 
@@ -297,10 +285,10 @@
       @include circle(
         linear-gradient(
           90deg,
-          rgba(183,183,183,1) 0%,
-          rgba(233,233,232,1) 30%,
-          rgba(86,86,86,1) 70%,
-          rgba(145,143,143,1) 100%
+          rgba(183, 183, 183, 1) 0%,
+          rgba(233, 233, 232, 1) 30%,
+          rgba(86, 86, 86, 1) 70%,
+          rgba(145, 143, 143, 1) 100%
         ),
         58%,
         top
@@ -310,11 +298,7 @@
 
     & .thick {
       @include circle(
-        linear-gradient(
-          90deg,
-          rgba(55,54,57,1) 0%,
-          rgba(7,7,7,1) 100%
-        ),
+        linear-gradient(90deg, rgba(55, 54, 57, 1) 0%, rgba(7, 7, 7, 1) 100%),
         55%,
         top
       );
@@ -323,11 +307,7 @@
 
     & .blue {
       @include circle(
-        linear-gradient(
-          270deg,
-          var(--light-blue-color-19) 0%,
-          var(--light-blue-color-8) 100%,
-        ),
+        linear-gradient(270deg, var(--light-blue-color-19) 0%, var(--light-blue-color-8) 100%),
         35%,
         a
       );
@@ -344,7 +324,7 @@
     &:before,
     &:after {
       top: 0;
-      border-bottom: .5vw solid #520c13da;
+      border-bottom: 0.5vw solid #520c13da;
       width: 22%;
     }
 
@@ -361,7 +341,7 @@
     }
 
     & .black {
-      @include circle(rgba(7,7,7,0.5), 60%, bottom);
+      @include circle(rgba(7, 7, 7, 0.5), 60%, bottom);
       top: -87.5%;
     }
 
@@ -369,10 +349,10 @@
       @include circle(
         linear-gradient(
           90deg,
-          rgba(183,183,183,1) 0%,
-          rgba(233,233,232,1) 30%,
-          rgba(86,86,86,1) 70%,
-          rgba(145,143,143,1) 100%
+          rgba(183, 183, 183, 1) 0%,
+          rgba(233, 233, 232, 1) 30%,
+          rgba(86, 86, 86, 1) 70%,
+          rgba(145, 143, 143, 1) 100%
         ),
         58%,
         bottom
@@ -382,11 +362,7 @@
 
     & .thick {
       @include circle(
-        linear-gradient(
-          90deg,
-          rgba(55,54,57,1) 0%,
-          rgba(7,7,7,1) 100%
-        ),
+        linear-gradient(90deg, rgba(55, 54, 57, 1) 0%, rgba(7, 7, 7, 1) 100%),
         55%,
         bottom
       );
@@ -414,33 +390,33 @@
         35%,
         a
       );
-      transition: 
-        --light-blue-color-7 .25s,
-        --light-blue-color-8 .25s,
-        --light-blue-color-9 .25s,
-        --light-blue-color-10 .25s,
-        --light-blue-color-11 .25s,
-        --light-blue-color-12 .25s,
-        --light-blue-color-13 .25s,
-        --light-blue-color-14 .25s,
-        --light-blue-color-15 .25s,
-        --light-blue-color-16 .25s,
-        --light-blue-color-17 .25s,
-        --light-blue-color-18 .1s,
-        --light-blue-color-19 .1s,
-        --light-blue-percentage-7 .25s,
-        --light-blue-percentage-8 .25s,
-        --light-blue-percentage-9 .25s,
-        --light-blue-percentage-10 .25s,
-        --light-blue-percentage-11 .25s,
-        --light-blue-percentage-12 .25s,
-        --light-blue-percentage-13 .25s,
-        --light-blue-percentage-14 .25s,
-        --light-blue-percentage-15 .25s,
-        --light-blue-percentage-16 .25s,
-        --light-blue-percentage-17 .25s,
-        --light-blue-percentage-18 .1s,
-        --light-blue-percentage-19 .1s;
+      transition:
+        --light-blue-color-7 0.25s,
+        --light-blue-color-8 0.25s,
+        --light-blue-color-9 0.25s,
+        --light-blue-color-10 0.25s,
+        --light-blue-color-11 0.25s,
+        --light-blue-color-12 0.25s,
+        --light-blue-color-13 0.25s,
+        --light-blue-color-14 0.25s,
+        --light-blue-color-15 0.25s,
+        --light-blue-color-16 0.25s,
+        --light-blue-color-17 0.25s,
+        --light-blue-color-18 0.1s,
+        --light-blue-color-19 0.1s,
+        --light-blue-percentage-7 0.25s,
+        --light-blue-percentage-8 0.25s,
+        --light-blue-percentage-9 0.25s,
+        --light-blue-percentage-10 0.25s,
+        --light-blue-percentage-11 0.25s,
+        --light-blue-percentage-12 0.25s,
+        --light-blue-percentage-13 0.25s,
+        --light-blue-percentage-14 0.25s,
+        --light-blue-percentage-15 0.25s,
+        --light-blue-percentage-16 0.25s,
+        --light-blue-percentage-17 0.25s,
+        --light-blue-percentage-18 0.1s,
+        --light-blue-percentage-19 0.1s;
       z-index: 2;
       top: -54.2%;
     }
@@ -452,10 +428,10 @@
     flex-direction: column;
     position: relative;
     z-index: 2;
-    
+
     .line {
       overflow: hidden;
-      box-shadow: 10px 0px 0px 2px rgba(0,0,0,0.3);
+      box-shadow: 10px 0px 0px 2px rgba(0, 0, 0, 0.3);
       align-self: center;
       height: 100%;
       width: 98%;
@@ -469,43 +445,43 @@
         var(--light-blue-color-5) var(--light-blue-percentage-5),
         var(--light-blue-color-6) var(--light-blue-percentage-6)
       );
-      transition: 
-        --light-blue-color-1 .25s,
-        --light-blue-color-2 .25s,
+      transition:
+        --light-blue-color-1 0.25s,
+        --light-blue-color-2 0.25s,
         --light-blue-color-3 1.5s,
-        --light-blue-color-4 .25s,
-        --light-blue-color-5 .25s,
-        --light-blue-color-6 .25s,
-        --light-blue-percentage-1 .25s,
-        --light-blue-percentage-2 .25s,
+        --light-blue-color-4 0.25s,
+        --light-blue-color-5 0.25s,
+        --light-blue-color-6 0.25s,
+        --light-blue-percentage-1 0.25s,
+        --light-blue-percentage-2 0.25s,
         --light-blue-percentage-3 1.5s,
-        --light-blue-percentage-4 .25s,
-        --light-blue-percentage-5 .25s,
-        --light-blue-percentage-6 .25s;
-        
-        @media (max-width: sizes.$tablet) {
-          max-height: 54px;
-        }
+        --light-blue-percentage-4 0.25s,
+        --light-blue-percentage-5 0.25s,
+        --light-blue-percentage-6 0.25s;
 
-        @media (max-width: sizes.$big_mobile) {
-          max-height: 49px;
-        }
-        
-        @media (max-width: sizes.$mobile) {
-          max-height: 44px;
-        }
+      @media (max-width: sizes.$tablet) {
+        max-height: 54px;
+      }
 
-        @media (max-width: 430px) {
-          max-height: 39px;
-        }
+      @media (max-width: sizes.$big_mobile) {
+        max-height: 49px;
+      }
 
-        @media (max-width: 400px) {
-          max-height: 34px;
-        }
+      @media (max-width: sizes.$mobile) {
+        max-height: 44px;
+      }
 
-        @media (max-width: 370px) {
-          max-height: 29px;
-        }
+      @media (max-width: 430px) {
+        max-height: 39px;
+      }
+
+      @media (max-width: 400px) {
+        max-height: 34px;
+      }
+
+      @media (max-width: 370px) {
+        max-height: 29px;
+      }
 
       .content {
         opacity: 0;
@@ -530,36 +506,36 @@
     overflow: hidden;
   }
 
-  .bottom{
+  .bottom {
     .blue {
-      box-shadow: inset 0px 0px 5px 3px rgba(0,0,0,0.3);
-        --light-blue-color-7: #fff;
-        --light-blue-color-8: #fff;
-        --light-blue-color-9: #fff;
-        --light-blue-color-10: #fff;
-        --light-blue-color-11: #fff;
-        --light-blue-color-12: #fff;
-        --light-blue-color-13: #fff;
-        --light-blue-color-14: #fff;
-        --light-blue-color-15: #fff;
-        --light-blue-color-16: #fff;
-        --light-blue-color-17: #fff;
-        --light-blue-color-18: #d8f9f5;
-        --light-blue-color-19: #d8f9f5;
-        --light-blue-percentage-7: 0%;
-        --light-blue-percentage-8: 0%;
-        --light-blue-percentage-9: 0%;
-        --light-blue-percentage-10: 0%;
-        --light-blue-percentage-11: 0%;
-        --light-blue-percentage-12: 0%;
-        --light-blue-percentage-13: 0%;
-        --light-blue-percentage-14: 0%;
-        --light-blue-percentage-15: 0%;
-        --light-blue-percentage-16: 0%;
-        --light-blue-percentage-17: 0%;
-        --light-blue-percentage-18: 0%;
-        --light-blue-percentage-19: 100%;
-      }
+      box-shadow: inset 0px 0px 5px 3px rgba(0, 0, 0, 0.3);
+      --light-blue-color-7: #fff;
+      --light-blue-color-8: #fff;
+      --light-blue-color-9: #fff;
+      --light-blue-color-10: #fff;
+      --light-blue-color-11: #fff;
+      --light-blue-color-12: #fff;
+      --light-blue-color-13: #fff;
+      --light-blue-color-14: #fff;
+      --light-blue-color-15: #fff;
+      --light-blue-color-16: #fff;
+      --light-blue-color-17: #fff;
+      --light-blue-color-18: #d8f9f5;
+      --light-blue-color-19: #d8f9f5;
+      --light-blue-percentage-7: 0%;
+      --light-blue-percentage-8: 0%;
+      --light-blue-percentage-9: 0%;
+      --light-blue-percentage-10: 0%;
+      --light-blue-percentage-11: 0%;
+      --light-blue-percentage-12: 0%;
+      --light-blue-percentage-13: 0%;
+      --light-blue-percentage-14: 0%;
+      --light-blue-percentage-15: 0%;
+      --light-blue-percentage-16: 0%;
+      --light-blue-percentage-17: 0%;
+      --light-blue-percentage-18: 0%;
+      --light-blue-percentage-19: 100%;
+    }
   }
 
   .top {
@@ -570,31 +546,31 @@
   }
 
   .center {
-    animation: open .75s ease-in-out;
+    animation: open 0.75s ease-in-out;
     max-height: none;
 
     .line {
       height: 100%;
       max-height: none;
-      box-shadow: 10px 0px 0px 0px rgba(0,0,0,0.3); 
-        --light-blue-color-1: #43e7e5;
-        --light-blue-color-2: #e7e7e7;
-        --light-blue-color-3: #d8f9f5;
-        --light-blue-color-4: #d8f9f5;
-        --light-blue-color-5: #e7e7e7;
-        --light-blue-color-6: #43e7e5;
-        --light-blue-percentage-1: 0%;
-        --light-blue-percentage-2: 1%;
-        --light-blue-percentage-3: 3%;
-        --light-blue-percentage-4: 98%;
-        --light-blue-percentage-5: 99%;
-        --light-blue-percentage-6: 100%;
-    
-        .content {
-          transition: .25s opacity ease-in;
-          opacity: 1;
-          pointer-events: all;
-        }
+      box-shadow: 10px 0px 0px 0px rgba(0, 0, 0, 0.3);
+      --light-blue-color-1: #43e7e5;
+      --light-blue-color-2: #e7e7e7;
+      --light-blue-color-3: #d8f9f5;
+      --light-blue-color-4: #d8f9f5;
+      --light-blue-color-5: #e7e7e7;
+      --light-blue-color-6: #43e7e5;
+      --light-blue-percentage-1: 0%;
+      --light-blue-percentage-2: 1%;
+      --light-blue-percentage-3: 3%;
+      --light-blue-percentage-4: 98%;
+      --light-blue-percentage-5: 99%;
+      --light-blue-percentage-6: 100%;
+
+      .content {
+        transition: 0.25s opacity ease-in;
+        opacity: 1;
+        pointer-events: all;
+      }
     }
   }
 }
@@ -616,7 +592,7 @@
 }
 
 .closed {
-  animation: revert-border-radius .75s ease-in-out;
+  animation: revert-border-radius 0.75s ease-in-out;
 
   .start {
     animation: fade-in 1.5s ease-in;
@@ -625,13 +601,13 @@
 
   .bottom {
     .blue {
-      animation: open-blue-circle .75s ease-in-out .2s;
+      animation: open-blue-circle 0.75s ease-in-out 0.2s;
     }
   }
 
   .center {
     .line {
-      animation: revert-height .75s ease-in-out;
+      animation: revert-height 0.75s ease-in-out;
     }
   }
 }

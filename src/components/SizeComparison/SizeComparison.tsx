@@ -1,59 +1,57 @@
-"use client"
+'use client';
 
-import Image from "next/image";
-import styles from "./SizeComparison.module.scss";
-import { FC, useState } from "react";
-import { UNOWN_IMAGE } from "@/lib/const";
-import TrainerRed from "../../../public/trainer_red.png";
-import { Pokemon } from "@/interfaces";
-import useViewSize from "@/hooks/useViewSize";
+import Image from 'next/image';
+import styles from './SizeComparison.module.scss';
+import { FC, useState } from 'react';
+import { UNOWN_IMAGE } from '@/lib/const';
+import TrainerRed from '../../../public/trainer_red.png';
+import { Pokemon } from '@/interfaces';
+import useViewSize from '@/hooks/useViewSize';
 
 const RED_HEIGHT = 16;
 const MAX_HEIGHT = 38;
 
-const SizeComparison:FC<Pokemon> = (pokemon) => {
+const SizeComparison: FC<Pokemon> = (pokemon) => {
   const [imageWidth, setImageWidth] = useState({
     width: 0,
     height: 0,
     aspectRatio: 0,
   });
-  const {width} = useViewSize();
+  const { width } = useViewSize();
 
-  const getImageHeight = (pokemonHeight: number, isRed?:boolean):string => {
+  const getImageHeight = (pokemonHeight: number, isRed?: boolean): string => {
     let maxHeight = MAX_HEIGHT;
-  
+
     if (width < 768) {
       maxHeight = MAX_HEIGHT * 0.75;
     }
-  
+
     if (width < 480) {
       maxHeight = MAX_HEIGHT * 0.5;
     }
-  
-    if ( isRed ) {
-      return `${pokemonHeight > maxHeight ? (maxHeight / pokemonHeight) * (RED_HEIGHT * 10) : (RED_HEIGHT * 10)}px`
+
+    if (isRed) {
+      return `${pokemonHeight > maxHeight ? (maxHeight / pokemonHeight) * (RED_HEIGHT * 10) : RED_HEIGHT * 10}px`;
     }
-  
-    return `${pokemonHeight > maxHeight ? maxHeight * 10 : pokemonHeight * 10}px`
-  }
-  
-  const getImageMaxHigh = (pokemonHeight: number, aspectRatio:number ,isRed?:boolean):string => {
+
+    return `${pokemonHeight > maxHeight ? maxHeight * 10 : pokemonHeight * 10}px`;
+  };
+
+  const getImageMaxHigh = (pokemonHeight: number, aspectRatio: number, isRed?: boolean): string => {
     let maxHeight = MAX_HEIGHT;
-  
+
     if (width < 768) {
       maxHeight = MAX_HEIGHT * 0.75;
-    }
-  
-    else if (width < 480) {
+    } else if (width < 480) {
       maxHeight = MAX_HEIGHT * 0.5;
     }
-  
-    if ( isRed ) {
-      return `${(pokemonHeight > maxHeight ? (maxHeight / pokemonHeight) * (RED_HEIGHT * 10) : (RED_HEIGHT * 10)) / aspectRatio}px`
+
+    if (isRed) {
+      return `${(pokemonHeight > maxHeight ? (maxHeight / pokemonHeight) * (RED_HEIGHT * 10) : RED_HEIGHT * 10) / aspectRatio}px`;
     }
-  
-    return `${(pokemonHeight > maxHeight ? maxHeight * 10 : pokemonHeight * 10) / aspectRatio}px`
-  }
+
+    return `${(pokemonHeight > maxHeight ? maxHeight * 10 : pokemonHeight * 10) / aspectRatio}px`;
+  };
 
   const handleImageLoad = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
     const { naturalWidth, naturalHeight } = event.currentTarget;
@@ -67,7 +65,8 @@ const SizeComparison:FC<Pokemon> = (pokemon) => {
   return (
     <section className={styles.sizeComparisonContainer}>
       <h2>Size comparison</h2>
-      <div className={`
+      <div
+        className={`
         ${styles.sizeComparison}
         ${styles[pokemon.types[0].type.name]}
       `}
@@ -89,8 +88,8 @@ const SizeComparison:FC<Pokemon> = (pokemon) => {
             filter: 'brightness(0.85)',
             height: getImageHeight(pokemon.height),
             maxHeight: getImageMaxHigh(pokemon.height, imageWidth.aspectRatio),
-            objectFit: "contain",
-            objectPosition: "center",
+            objectFit: 'contain',
+            objectPosition: 'center',
           }}
           onLoad={handleImageLoad}
         />
@@ -108,6 +107,6 @@ const SizeComparison:FC<Pokemon> = (pokemon) => {
       </div>
     </section>
   );
-}
+};
 
 export default SizeComparison;

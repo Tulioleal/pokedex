@@ -1,11 +1,7 @@
 @use 'sass:color';
 @use './_colors';
 
-@mixin card(
-  $background-color,
-  $border-color,
-  $shadow-color
-) {
+@mixin card($background-color, $border-color, $shadow-color) {
   $y: 4px;
   $x: 4px;
 
@@ -21,10 +17,7 @@
   }
 }
 
-@mixin button(
-  $height,
-  $width,
-) {
+@mixin button($height, $width) {
   height: $height;
   width: $width;
   background-color: color.adjust(colors.$almost_black, $lightness: 25%);

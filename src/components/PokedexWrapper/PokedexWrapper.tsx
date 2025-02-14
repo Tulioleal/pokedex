@@ -1,18 +1,15 @@
-"use client"
+'use client';
 
 import { FC, ReactNode, useEffect, useState } from 'react';
 import styles from './PokedexWrapper.module.scss';
 import { useRouter } from 'next/navigation';
 
 interface PokedexWrapperProps {
-  children?: string | ReactNode
-  openDefault?: boolean
+  children?: string | ReactNode;
+  openDefault?: boolean;
 }
 
-const PokedexWrapper:FC<PokedexWrapperProps> = ({
-  children,
-  openDefault = false
-}) => {
+const PokedexWrapper: FC<PokedexWrapperProps> = ({ children, openDefault = false }) => {
   const [open, setOpen] = useState(openDefault);
   const [loading, setLoading] = useState(true);
   const [noOpenAnimation, setOpenNoAnimation] = useState(openDefault);
@@ -23,11 +20,11 @@ const PokedexWrapper:FC<PokedexWrapperProps> = ({
     localStorage.setItem('pokedexOpen', JSON.stringify(!open));
     setOpen(!open);
     setOpenNoAnimation(false);
-  }
+  };
 
   useEffect(() => {
     const pokedexOpen = localStorage.getItem('pokedexOpen');
-  
+
     if (pokedexOpen) {
       setOpen(JSON.parse(pokedexOpen));
       setOpenNoAnimation(true);
@@ -42,12 +39,14 @@ const PokedexWrapper:FC<PokedexWrapperProps> = ({
 
   return (
     <main className={styles.container}>
-      <div className={`
+      <div
+        className={`
         ${styles.pokedex}
         ${open && styles.open}
         ${(openDefault || noOpenAnimation) && styles.openDefault}
         ${opened && !open && styles.closed}
-      `}>
+      `}
+      >
         <div className={styles.top}>
           <div className={`${styles.corner} ${styles.left}`} />
           <div className={`${styles.corner} ${styles.right}`} />
@@ -59,28 +58,25 @@ const PokedexWrapper:FC<PokedexWrapperProps> = ({
         <div className={styles.center}>
           <div className={styles.line}>
             <div className={styles.content}>
-              {
-                open && !openDefault &&
-                  <button
-                    className={`${styles.button} ${styles.close}`}
-                    onClick={() => {
-                      toggleOpen()
-                      setOpened(true)
-                    }}
-                  > Close
-                  </button>
-              }
-              {
-                openDefault &&
-                  <button
-                    className={`${styles.button} ${styles.back}`}
-                    onClick={() => router.back()}
-                  > Back
-                  </button>
-              }
-              {
-                children
-              }
+              {open && !openDefault && (
+                <button
+                  className={`${styles.button} ${styles.close}`}
+                  onClick={() => {
+                    toggleOpen();
+                    setOpened(true);
+                  }}
+                >
+                  {' '}
+                  Close
+                </button>
+              )}
+              {openDefault && (
+                <button className={`${styles.button} ${styles.back}`} onClick={() => router.back()}>
+                  {' '}
+                  Back
+                </button>
+              )}
+              {children}
             </div>
           </div>
         </div>
@@ -90,7 +86,7 @@ const PokedexWrapper:FC<PokedexWrapperProps> = ({
           <div className={`${styles.border} ${styles.black}`} />
           <div className={`${styles.border} ${styles.clear}`} />
           <div className={`${styles.border} ${styles.thick} ${styles.black}`} />
-          <div  className={`${styles.border} ${styles.blue}`} />
+          <div className={`${styles.border} ${styles.blue}`} />
         </div>
         {
           <button className={`${styles.button} ${styles.start}`} onClick={toggleOpen}>
@@ -100,6 +96,6 @@ const PokedexWrapper:FC<PokedexWrapperProps> = ({
       </div>
     </main>
   );
-}
+};
 
 export default PokedexWrapper;

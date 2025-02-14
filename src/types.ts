@@ -21,7 +21,7 @@ type pokemonType =
 type generalLink = {
   name: string;
   url: string;
-}
+};
 
 interface ability {
   ability: generalLink;
@@ -41,19 +41,18 @@ type stat = {
   specialAttack: number;
   specialDefense: number;
   speed: number;
-}
+};
 
 type type = {
   slot: number;
   type: generalLink;
-}
+};
 
 type statInfo = {
   base_stat: number;
   effort: number;
   stat: generalLink;
-}
-
+};
 
 interface gameIndex {
   game_index: number;
@@ -63,12 +62,12 @@ interface gameIndex {
 type versionDetail = {
   rarity: number;
   version: generalLink;
-}
+};
 type chain = {
   evolves_to: chain[];
   is_baby: boolean;
   species: generalLink;
-}
+};
 
 export type {
   ability,
@@ -80,5 +79,5 @@ export type {
   type,
   gameIndex,
   versionDetail,
-  chain
-}
+  chain,
+};
