@@ -94,7 +94,7 @@ const PokemonSprite = async ({ name, showArrow }: { name: string, showArrow?: bo
           <Image
             alt={pokemon.name}
             src={
-              pokemon.sprites.front_default || 
+              pokemon.sprites?.front_default ||
               "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/201.png" // Default image (Unown)
             }
             width={100}

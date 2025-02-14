@@ -69,7 +69,10 @@ export const PokemonCard = (
   if (loading || !pokemonData)
     return (
       <div className={styles.pokemonCard}>
-        <Spinner/>
+         <section className={styles.top}>
+          <Spinner/>
+         </section>
+        <section className={styles.bottom} />
       </div>
     );
 
