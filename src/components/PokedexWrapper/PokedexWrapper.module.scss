@@ -599,6 +599,22 @@
   }
 }
 
+.openDefault {
+  @extend .open;
+
+  .center {
+    animation: none;
+
+    .line {
+      transition: none;
+    }
+
+    .content {
+      transition: none;
+    }
+  }
+}
+
 .closed {
   animation: revert-border-radius .75s ease-in-out;
 

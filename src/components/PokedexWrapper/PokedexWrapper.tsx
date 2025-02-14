@@ -14,28 +14,30 @@ const PokedexWrapper:FC<PokedexWrapperProps> = ({
   openDefault = false
 }) => {
   const [open, setOpen] = useState(openDefault);
+  const [loading, setLoading] = useState(true);
+  const [noOpenAnimation, setOpenNoAnimation] = useState(openDefault);
   const [opened, setOpened] = useState(false);
-  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const toggleOpen = () => {
     localStorage.setItem('pokedexOpen', JSON.stringify(!open));
     setOpen(!open);
+    setOpenNoAnimation(false);
   }
 
   useEffect(() => {
-    setLoading(true);
     const pokedexOpen = localStorage.getItem('pokedexOpen');
   
     if (pokedexOpen) {
       setOpen(JSON.parse(pokedexOpen));
+      setOpenNoAnimation(true);
     }
 
     setLoading(false);
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>
+  if (!openDefault && loading) {
+    return null;
   }
 
   return (
@@ -43,6 +45,7 @@ const PokedexWrapper:FC<PokedexWrapperProps> = ({
       <div className={`
         ${styles.pokedex}
         ${open && styles.open}
+        ${(openDefault || noOpenAnimation) && styles.openDefault}
         ${opened && !open && styles.closed}
       `}>
         <div className={styles.top}>
