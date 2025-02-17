@@ -25,9 +25,17 @@ const PokedexWrapper: FC<PokedexWrapperProps> = ({ children, openDefault = false
   useEffect(() => {
     const pokedexOpen = localStorage.getItem('pokedexOpen');
 
+    if (!pokedexOpen) {
+      localStorage.setItem('pokedexOpen', JSON.stringify(openDefault));
+      setOpenNoAnimation(openDefault);
+      setLoading(false);
+      return;
+    }
+
     if (pokedexOpen) {
-      setOpen(JSON.parse(pokedexOpen));
-      setOpenNoAnimation(true);
+      const pokedexOpenBoolean = JSON.parse(pokedexOpen);
+      setOpen(pokedexOpenBoolean);
+      setOpenNoAnimation(pokedexOpenBoolean);
     }
 
     setLoading(false);
@@ -41,11 +49,11 @@ const PokedexWrapper: FC<PokedexWrapperProps> = ({ children, openDefault = false
     <main className={styles.container}>
       <div
         className={`
-        ${styles.pokedex}
-        ${open && styles.open}
-        ${(openDefault || noOpenAnimation) && styles.openDefault}
-        ${opened && !open && styles.closed}
-      `}
+          ${styles.pokedex}
+          ${open ? styles.open : ''}
+          ${openDefault || noOpenAnimation ? styles.openDefault : ''}
+          ${opened && !open ? styles.closed : ''}
+        `}
       >
         <div className={styles.top}>
           <div className={`${styles.corner} ${styles.left}`} />
@@ -66,13 +74,11 @@ const PokedexWrapper: FC<PokedexWrapperProps> = ({ children, openDefault = false
                     setOpened(true);
                   }}
                 >
-                  {' '}
                   Close
                 </button>
               )}
               {openDefault && (
                 <button className={`${styles.button} ${styles.back}`} onClick={() => router.back()}>
-                  {' '}
                   Back
                 </button>
               )}

@@ -27,7 +27,7 @@ const Pagination: FC<PaginationProps> = ({ pokemonListLength, changePage }) => {
 
     setCurrentPage(page);
     changePage(page);
-  }, [pages, searchParams]);
+  }, [pages, searchParams, changePage]);
 
   const handlePageChange = useCallback(
     (nextPage: number) => {
@@ -42,7 +42,7 @@ const Pagination: FC<PaginationProps> = ({ pokemonListLength, changePage }) => {
 
       router.push(pathname + '?' + params.toString());
     },
-    [searchParams, pages, pathname, router],
+    [searchParams, pages, pathname, router, changePage],
   );
 
   return (
