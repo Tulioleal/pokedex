@@ -113,12 +113,6 @@
 
 ///////////////////
 ///
-@property --light-blue-percentage-1 {
-  syntax: '<percentage>';
-  initial-value: 0%;
-  inherits: false;
-}
-
 @property --light-blue-percentage-2 {
   syntax: '<percentage>';
   initial-value: 10%;
@@ -146,12 +140,6 @@
 @property --light-blue-percentage-6 {
   syntax: '<percentage>';
   initial-value: 100%;
-  inherits: false;
-}
-
-@property --light-blue-percentage-7 {
-  syntax: '<percentage>';
-  initial-value: 0%;
   inherits: false;
 }
 

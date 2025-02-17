@@ -373,7 +373,7 @@
       @include circle(
         radial-gradient(
           circle,
-          var(--light-blue-color-7) var(--light-blue-percentage-7),
+          var(--light-blue-color-7) 0%,
           var(--light-blue-color-8) var(--light-blue-percentage-8),
           var(--light-blue-color-9) var(--light-blue-percentage-9),
           var(--light-blue-color-10) var(--light-blue-percentage-10),
@@ -417,7 +417,7 @@
         --light-blue-percentage-17 0.25s,
         --light-blue-percentage-18 0.1s,
         --light-blue-percentage-19 0.1s;
-      z-index: 2;
+      z-index: 3;
       top: -54.2%;
     }
   }
@@ -438,7 +438,7 @@
       max-height: 54px;
       background: linear-gradient(
         90deg,
-        var(--light-blue-color-1) var(--light-blue-percentage-1),
+        var(--light-blue-color-1) 0%,
         var(--light-blue-color-2) var(--light-blue-percentage-2),
         var(--light-blue-color-3) var(--light-blue-percentage-3),
         var(--light-blue-color-4) var(--light-blue-percentage-4),
